@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @GetMapping("test")
-    public String test(){
-        return "This is just test for auth";
+    @GetMapping("test-admin")
+    public String testAdmin(){
+        return "This is Admin auth";
+    }
+
+    @GetMapping("test-user")
+    public String testUser(){
+        return "This is User auth";
     }
 }

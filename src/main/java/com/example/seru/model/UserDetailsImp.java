@@ -17,6 +17,8 @@ public class UserDetailsImp implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        System.out.println("XXXX");
         if(this.authorities){
             return Arrays.stream(new String[]{"ADMIN"}).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
         }else{
@@ -25,6 +27,7 @@ public class UserDetailsImp implements UserDetails {
     }
 
     public UserDetailsImp(User user) {
+        System.out.println("XXXX1");
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.authorities = user.getIs_admin();
