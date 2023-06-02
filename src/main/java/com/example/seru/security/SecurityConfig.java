@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
-    String[] WHITE_LIST = {"users/add"};
+    String[] WHITE_LIST = {"users/**"};
 
 
     @Bean

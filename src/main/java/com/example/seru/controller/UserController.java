@@ -6,6 +6,8 @@ import com.example.seru.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("users")
 @RequiredArgsConstructor
@@ -17,6 +19,16 @@ public class UserController {
     public UserRegistrationDto addUser(@RequestBody() User user)
     {
         return userService.addUser(user);
+    }
+
+    @GetMapping("")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
+    }
+
+    @GetMapping("/{userId}")
+    public User getAllUser(@PathVariable Integer userId){
+        return userService.getUser(userId);
     }
 
 }
