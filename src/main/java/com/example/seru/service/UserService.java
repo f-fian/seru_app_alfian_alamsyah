@@ -42,4 +42,9 @@ public class UserService {
     public User getUser(Integer userId) {
         return userRepo.findById(userId).orElseThrow(()->new UsernameNotFoundException("user id tidak ditemukan"));
     }
+
+    public String deleteUser(Integer userId) {
+        userRepo.deleteById(userId);
+        return "User Telah berhasil di delete";
+    }
 }

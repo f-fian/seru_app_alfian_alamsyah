@@ -4,6 +4,7 @@ import com.example.seru.dto.UserRegistrationDto;
 import com.example.seru.model.User;
 import com.example.seru.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,11 @@ public class UserController {
     @GetMapping("/{userId}")
     public User getAllUser(@PathVariable Integer userId){
         return userService.getUser(userId);
+    }
+
+    @DeleteMapping("/{userId}")
+    public String deleteUser(@PathVariable Integer userId){
+        return userService.deleteUser(userId);
     }
 
 }
