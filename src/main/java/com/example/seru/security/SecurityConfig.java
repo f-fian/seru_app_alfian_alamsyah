@@ -24,6 +24,7 @@ public class SecurityConfig {
                 .cors().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(WHITE_LIST).permitAll()
+                .requestMatchers("test").hasAuthority("ADMIN")
                 .and()
                 .build();
 
