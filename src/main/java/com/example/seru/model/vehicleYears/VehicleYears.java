@@ -17,6 +17,10 @@ public class VehicleYears {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String year;
+
+    public VehicleYears(String year) {
+        this.year = year;
+    }
 }
 
 

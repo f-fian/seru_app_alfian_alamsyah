@@ -18,7 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
-    String[] WHITE_LIST = {"users/**"};
+    String[] WHITE_LIST = {"users/**","vehicle-years/**"};
 
 
     @Autowired
