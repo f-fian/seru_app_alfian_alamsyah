@@ -1,4 +1,4 @@
-package com.example.seru.model;
+package com.example.seru.model.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

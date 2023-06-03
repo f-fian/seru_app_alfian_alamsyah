@@ -1,6 +1,6 @@
 package com.example.seru.security;
 
-import com.example.seru.model.UserDetailsServiceImp;
+import com.example.seru.model.user.UserDetailsServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

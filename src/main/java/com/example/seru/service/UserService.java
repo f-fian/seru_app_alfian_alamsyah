@@ -1,7 +1,7 @@
 package com.example.seru.service;
 
 import com.example.seru.dto.UserRegistrationDto;
-import com.example.seru.model.User;
+import com.example.seru.model.user.User;
 import com.example.seru.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
