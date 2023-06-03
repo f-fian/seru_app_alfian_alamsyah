@@ -22,7 +22,6 @@ public class VehicleTypesController {
         return new ResponseEntity<>(vehicleTypes, HttpStatusCode.valueOf(201));
 
     }
-
     @GetMapping("")
     public ResponseEntity<List<VehicleTypes>> getAllVehicleTypes(){
         List<VehicleTypes> allVehicleTypes = vehicleTypesService.findAllVehicleTypes();
@@ -37,7 +36,26 @@ public class VehicleTypesController {
         return new ResponseEntity<>(VehicleTypes,HttpStatusCode.valueOf(200));
     }
 
+    @PutMapping("{vehicle-types-id}")
+    public ResponseEntity<VehicleTypes> updateVehicleTypes(
+            @RequestBody VehicleTypesDto vehicleTypesDto,
+            @PathVariable("vehicle-types-id") Integer vehicleTypesId)
 
+    {
+        VehicleTypes vehicleTypes = vehicleTypesService.updateVehicleTypes(vehicleTypesDto,vehicleTypesId);
+        return new ResponseEntity<>(vehicleTypes,HttpStatusCode.valueOf(201));
+    }
+
+
+    @DeleteMapping("{vehicle-types-id}")
+    public ResponseEntity<Void> deleteVehicleTypes(
+            @PathVariable("vehicle-types-id") Integer vehicleTypesId)
+    {
+        vehicleTypesService.deleteVehicleTypes(vehicleTypesId);
+
+        return new ResponseEntity<>(HttpStatusCode.valueOf(204));
+
+    }
 
 
 

@@ -39,4 +39,24 @@ public class VehicleTypesService {
         return vehicleTypesRepo.findById(vehicleTypesId)
                 .orElseThrow(()->new UsernameNotFoundException("vehicle types id not found"));
     }
+
+    public VehicleTypes updateVehicleTypes(VehicleTypesDto vehicleTypesDto, Integer vehicleTypesId) {
+
+        VehicleTypes vehicleTypes = vehicleTypesRepo.findById(vehicleTypesId)
+                .orElseThrow(()->new UsernameNotFoundException("vehicle types id is not found"));
+
+        VehicleBrands vehicleBrands = vehicleBrandRepo.findById(vehicleTypesDto.brand_id())
+                .orElseThrow(()->new UsernameNotFoundException("vehcile brands id is not found"));
+
+        vehicleTypes.setName(vehicleTypesDto.name());
+        vehicleTypes.setVehicleBrands(vehicleBrands);
+
+        vehicleTypesRepo.save(vehicleTypes);
+        return vehicleTypes;
+
+    }
+
+    public void deleteVehicleTypes(Integer vehicleTypesId) {
+        vehicleTypesRepo.deleteById(vehicleTypesId);
+    }
 }
