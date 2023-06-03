@@ -32,9 +32,27 @@ public class VehicleModelsService {
         return vehicleModelsRepo.findAll();
     }
 
-    public VehicleModels getVehicleModels(Integer vehicleModelsId) {
+    public VehicleModels getVehicleModel(Integer vehicleModelsId) {
         return vehicleModelsRepo.findById(vehicleModelsId)
                 .orElseThrow(()->new UsernameNotFoundException("vehicle models id is not found"));
+    }
+
+    public VehicleModels updateVehicleModel(VehicleModelsDto vehicleModelsDto,Integer vehiclModelId){
+
+        VehicleModels vehicleModels = vehicleModelsRepo.findById(vehiclModelId)
+                .orElseThrow(()->new UsernameNotFoundException("vehicle model id is not found"));
+
+        VehicleTypes vehicleTypes = vehicleTypesRepo.findById(vehicleModelsDto.type_id())
+                .orElseThrow(()->new UsernameNotFoundException("model type id is not found"));
+
+        vehicleModels.setName(vehicleModelsDto.name());
+        vehicleModels.setVehicleTypes(vehicleTypes);
+        vehicleModelsRepo.save(vehicleModels);
+        return vehicleModels;
+    }
+
+    public void deleteVehicleModel(Integer vehicleModelId){
+        vehicleModelsRepo.deleteById(vehicleModelId);
     }
 }
 

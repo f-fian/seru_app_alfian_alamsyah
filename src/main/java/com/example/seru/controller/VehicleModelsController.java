@@ -32,11 +32,25 @@ public class VehicleModelsController {
     }
 
     @GetMapping("{vehicle-models-id}")
-    public ResponseEntity<VehicleModels> getVehicleModels(
+    public ResponseEntity<VehicleModels> getVehicleModel(
           @PathVariable("vehicle-models-id") Integer vehicleModelsId)
     {
-        VehicleModels vehicleModels = vehicleModelsService.getVehicleModels(vehicleModelsId);
+        VehicleModels vehicleModels = vehicleModelsService.getVehicleModel(vehicleModelsId);
         return new ResponseEntity<>(vehicleModels,HttpStatusCode.valueOf(200));
+    }
+
+    @PutMapping("{vehicle-models-id}")
+    public ResponseEntity<VehicleModels> updateVehicleModel(
+            @RequestBody VehicleModelsDto vehicleModelsDto,
+            @PathVariable("vehicle-models-id") Integer vehicleModelsId)
+    {
+        VehicleModels vehicleModels = vehicleModelsService.updateVehicleModel(vehicleModelsDto,vehicleModelsId);
+        return new ResponseEntity<>(vehicleModels,HttpStatusCode.valueOf(201));
+    }
+    @DeleteMapping("{vehicle-models-id}")
+    public ResponseEntity<Void> deleteVehicleModel(@PathVariable("vehicle-models-id") Integer vehicleModelsId){
+        vehicleModelsService.deleteVehicleModel(vehicleModelsId);
+        return new ResponseEntity<>(HttpStatusCode.valueOf(204));
     }
 
 
