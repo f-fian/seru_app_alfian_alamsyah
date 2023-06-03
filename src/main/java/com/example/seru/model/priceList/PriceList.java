@@ -1,6 +1,7 @@
 package com.example.seru.model.priceList;
 
-import com.example.seru.model.vehicleModel.VehicleModel;
+
+import com.example.seru.model.vehicleModel.VehicleModels;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class PriceList {
             name = "model_id",
             referencedColumnName = "id"
     )
-    private VehicleModel vehicleModel;
+    private VehicleModels vehicleModels;
 
     @ManyToOne
     @JoinColumn(

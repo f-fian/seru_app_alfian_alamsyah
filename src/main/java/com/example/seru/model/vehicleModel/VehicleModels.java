@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
                 @UniqueConstraint(columnNames = "name")
         }
 )
-public class VehicleModel {
+public class VehicleModels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,5 +31,12 @@ public class VehicleModel {
             referencedColumnName = ""
     )
     private VehicleTypes vehicleTypes;
+
+    public VehicleModels(String name, VehicleTypes vehicleTypes) {
+        this.name = name;
+        this.vehicleTypes = vehicleTypes;
+    }
+
+
 
 }
