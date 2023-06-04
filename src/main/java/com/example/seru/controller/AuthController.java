@@ -48,6 +48,11 @@ public class AuthController {
 
         var user = userDetailsServiceImp.loadUserByUsername(loginUserDto.username());
 
+        System.out.println("dari controller");
+        System.out.println(loginUserDto.username());
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
+
         return jwtService.generateToken(user);
     }
 }

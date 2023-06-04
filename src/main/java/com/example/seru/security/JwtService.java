@@ -43,6 +43,9 @@ public class JwtService {
       Map<String, Object> extraClaims,
       UserDetails userDetails
   ) {
+    System.out.println("userDetail");
+    System.out.println(userDetails.getUsername());
+    System.out.println(userDetails.getPassword());
     return buildToken(extraClaims, userDetails, jwtExpiration);
   }
 
@@ -57,6 +60,8 @@ public class JwtService {
           UserDetails userDetails,
           long expiration
   ) {
+
+    System.out.println(userDetails.getUsername());
     return Jwts
             .builder()
             .setClaims(extraClaims)
