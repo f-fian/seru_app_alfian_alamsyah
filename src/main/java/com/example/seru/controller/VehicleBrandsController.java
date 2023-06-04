@@ -28,7 +28,10 @@ public class VehicleBrandsController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<VehicleBrands>> getAllVehicleBrands(){
+    public ResponseEntity<List<VehicleBrands>> getAllVehicleBrands(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer limit
+    ){
         List<VehicleBrands> allVehicleBrands = vehicleBrandsService.getAllVehicleBrands();
         return new ResponseEntity<>(allVehicleBrands, HttpStatusCode.valueOf(200));
     }

@@ -1,5 +1,6 @@
 package com.example.seru.controller;
 
+import com.example.seru.dto.FindAllVehicleYearsDto;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.service.VehicleYearsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,11 @@ public class VehicleYearsController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<VehicleYears>> getAllVehicleYears(){
-        List<VehicleYears> allVehicleYears = vehicleYearsService.getAllVehicleYears();
+    public ResponseEntity<FindAllVehicleYearsDto> getAllVehicleYears(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer limit
+    ){
+        FindAllVehicleYearsDto allVehicleYears = vehicleYearsService.getAllVehicleYears(page,limit);
 
         return new ResponseEntity<>(allVehicleYears,HttpStatusCode.valueOf(200));
     }

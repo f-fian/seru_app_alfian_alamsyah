@@ -1,8 +1,12 @@
 package com.example.seru.service;
 
+import com.example.seru.dto.FindAllVehicleYearsDto;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.repository.VehicleYearsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +23,26 @@ public class VehicleYearsService {
         return newVehicleYears;
     }
 
-    public List<VehicleYears> getAllVehicleYears() {
-        return vehicleYearsRepo.findAll();
+    public FindAllVehicleYearsDto getAllVehicleYears(Integer page, Integer limit) {
+
+        if(page == null && limit == null){
+            List<VehicleYears> data = vehicleYearsRepo.findAll();
+            return FindAllVehicleYearsDto.builder()
+                    .total(data.stream().count())
+                    .limit(0)
+                    .skip(0)
+                    .data(data)
+                    .build();
+        }
+
+        Pageable pageable = PageRequest.of(page-1,limit);
+        Page<VehicleYears> data = vehicleYearsRepo.findAll(pageable);
+        return FindAllVehicleYearsDto.builder()
+                .total(data.getTotalElements())
+                .limit(limit)
+                .skip((page-1)*2)
+                .data(data.getContent())
+                .build();
     }
 
     public VehicleYears getVehicleYears(Integer vehicleYearsId) {
