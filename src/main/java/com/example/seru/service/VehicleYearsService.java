@@ -26,10 +26,11 @@ public class VehicleYearsService {
     public FindAllVehicleYearsDto getAllVehicleYears(Integer page, Integer limit) {
 
         List<VehicleYears> data = vehicleYearsRepo.findAll();
-        if(page == null && limit == null){
+        if(page == null || limit == null){
             return FindAllVehicleYearsDto.builder()
                     .total(data.stream().count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(data)
                     .build();
@@ -39,6 +40,7 @@ public class VehicleYearsService {
         return FindAllVehicleYearsDto.builder()
                 .total(data.stream().count())
                 .limit(limit)
+                .page(page)
                 .skip((page-1)*2)
                 .data(vehicleYearsRepo.findAll(pageable).getContent())
                 .build();

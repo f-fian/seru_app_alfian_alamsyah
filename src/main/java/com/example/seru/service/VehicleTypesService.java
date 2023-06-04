@@ -45,6 +45,7 @@ public class VehicleTypesService {
             return FindAllVehicleTypesDto.builder()
                     .total(vehicleTypesRepo.count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(vehicleTypesRepo.findAll())
                     .build();
@@ -56,6 +57,7 @@ public class VehicleTypesService {
             return FindAllVehicleTypesDto.builder()
                     .total(data.getTotalElements())
                     .limit(limit)
+                    .page(page)
                     .skip((page-1)*2)
                     .data(data.getContent())
                     .build();
@@ -69,6 +71,7 @@ public class VehicleTypesService {
             return FindAllVehicleTypesDto.builder()
                     .total(data.stream().count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(data)
                     .build();
@@ -79,6 +82,7 @@ public class VehicleTypesService {
         return FindAllVehicleTypesDto.builder()
                 .total(data.getTotalElements())
                 .limit(limit)
+                .page(page)
                 .skip((page-1)*2)
                 .data(data.getContent())
                 .build();

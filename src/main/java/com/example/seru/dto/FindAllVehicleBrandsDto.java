@@ -10,6 +10,7 @@ import java.util.List;
 public record FindAllVehicleBrandsDto(
         Long total,
         Integer limit,
+        Integer page,
         Integer skip,
         List<VehicleBrands> data
 ) {

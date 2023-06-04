@@ -52,6 +52,7 @@ public class PriceListService {
                     .total(priceListRepo.count())
                     .limit(0)
                     .skip(0)
+                    .page(0)
                     .data(priceListRepo.findAll())
                     .build();
         }
@@ -63,6 +64,7 @@ public class PriceListService {
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(data)
                     .build();
@@ -75,6 +77,7 @@ public class PriceListService {
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(data)
                     .build();
@@ -86,6 +89,7 @@ public class PriceListService {
             return FindAllPriceListDto.builder()
                     .total(data.getTotalElements())
                     .limit(limit)
+                    .page(page)
                     .skip((page-1)*2)
                     .data(data.getContent())
                     .build();
@@ -99,6 +103,7 @@ public class PriceListService {
             return FindAllPriceListDto.builder()
                     .total(data.getTotalElements())
                     .limit(limit)
+                    .page(page)
                     .skip((page-1)*2)
                     .data(data.getContent())
                     .build();
@@ -112,6 +117,7 @@ public class PriceListService {
             return FindAllPriceListDto.builder()
                     .total(data.getTotalElements())
                     .limit(limit)
+                    .page(page)
                     .skip((page-1)*2)
                     .data(data.getContent())
                     .build();
@@ -128,6 +134,7 @@ public class PriceListService {
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(data)
                     .build();
@@ -139,6 +146,7 @@ public class PriceListService {
         return FindAllPriceListDto.builder()
                 .total(data.getTotalElements())
                 .limit(limit)
+                .page(page)
                 .skip((page-1)*2)
                 .data(data.getContent())
                 .build();

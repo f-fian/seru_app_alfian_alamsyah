@@ -27,11 +27,12 @@ public class VehicleBrandsService {
 
 
         List<VehicleBrands> data = vehicleBrandRepo.findAll();
-        if(page==null && limit == null){
+        if(page==null || limit == null){
 
             return FindAllVehicleBrandsDto.builder()
                     .total(data.stream().count())
                     .limit(0)
+                    .page(0)
                     .skip(0)
                     .data(data)
                     .build();
@@ -41,6 +42,7 @@ public class VehicleBrandsService {
         return FindAllVehicleBrandsDto.builder()
                 .total(data.stream().count())
                 .limit(limit)
+                .page(page)
                 .skip((page-1)*2)
                 .data(vehicleBrandRepo.findAll(pageable).getContent())
                 .build();

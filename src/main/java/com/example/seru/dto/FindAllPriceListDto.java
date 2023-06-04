@@ -10,6 +10,7 @@ import java.util.List;
 public record FindAllPriceListDto(
         Long total,
         Integer limit,
+        Integer page,
         Integer skip,
         List<PriceList> data
 ) {

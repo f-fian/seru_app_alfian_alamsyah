@@ -9,6 +9,7 @@ import java.util.List;
 public record FindAllVehicleTypesDto(
         Long total,
         Integer limit,
+        Integer page,
         Integer skip,
         List<VehicleTypes> data
 ) {
