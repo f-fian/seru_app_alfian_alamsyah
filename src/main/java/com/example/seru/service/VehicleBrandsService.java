@@ -1,8 +1,12 @@
 package com.example.seru.service;
 
+import com.example.seru.dto.FindAllVehicleBrandsDto;
 import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.repository.VehicleBrandRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +23,27 @@ public class VehicleBrandsService {
         return vehicleBrandRepo.save(newVehicleBrands);
     }
 
-    public List<VehicleBrands> getAllVehicleBrands() {
-        return vehicleBrandRepo.findAll();
+    public FindAllVehicleBrandsDto getAllVehicleBrands(Integer page, Integer limit) {
+
+
+        List<VehicleBrands> data = vehicleBrandRepo.findAll();
+        if(page==null && limit == null){
+
+            return FindAllVehicleBrandsDto.builder()
+                    .total(data.stream().count())
+                    .limit(0)
+                    .skip(0)
+                    .data(data)
+                    .build();
+        }
+
+        Pageable pageable = PageRequest.of(page-1,limit);
+        return FindAllVehicleBrandsDto.builder()
+                .total(data.stream().count())
+                .limit(limit)
+                .skip((page-1)*2)
+                .data(vehicleBrandRepo.findAll(pageable).getContent())
+                .build();
     }
 
     public VehicleBrands getVehicleBrands(Integer vehicleBrandsId) {
