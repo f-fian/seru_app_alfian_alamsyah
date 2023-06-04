@@ -31,8 +31,6 @@ public class VehicleTypesController {
 
         FindAllVehicleTypesDto data = vehicleTypesService.findAllVehicleTypes(page,limit,brandId);
 
-        System.out.println("data");
-        System.out.println(data);
 
         return new ResponseEntity<>(data,HttpStatusCode.valueOf(200));
 

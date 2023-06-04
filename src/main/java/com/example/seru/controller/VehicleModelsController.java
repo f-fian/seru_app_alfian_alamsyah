@@ -1,6 +1,7 @@
 package com.example.seru.controller;
 
 
+import com.example.seru.dto.FindAllVehicleModelsDto;
 import com.example.seru.dto.VehicleModelsDto;
 import com.example.seru.model.vehicleModel.VehicleModels;
 import com.example.seru.service.VehicleModelsService;
@@ -23,11 +24,17 @@ public class VehicleModelsController {
     public ResponseEntity<VehicleModels> addVehicleModel(@RequestBody VehicleModelsDto vehicleModelsDto){
         VehicleModels vehicleModels = vehicleModelsService.addVehicleModel(vehicleModelsDto);
         return new ResponseEntity<>(vehicleModels, HttpStatusCode.valueOf(201));
+
+
     }
 
     @GetMapping("")
-    public ResponseEntity<List<VehicleModels>> getAllVehicleModels(){
-        List<VehicleModels> allVehicleModels = vehicleModelsService.getAllVehicleModels();
+    public ResponseEntity<FindAllVehicleModelsDto> getAllVehicleModels(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer limit,
+            @RequestParam(required = false,value = "type-id") Integer typeId
+    ){
+        FindAllVehicleModelsDto allVehicleModels = vehicleModelsService.getAllVehicleModels(page,limit,typeId);
         return new ResponseEntity<>(allVehicleModels,HttpStatusCode.valueOf(200));
     }
 
