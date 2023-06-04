@@ -1,5 +1,6 @@
 package com.example.seru.controller;
 
+import com.example.seru.dto.FindAllPriceListDto;
 import com.example.seru.dto.PricelistDto;
 import com.example.seru.model.priceList.PriceList;
 import com.example.seru.service.PriceListService;
@@ -27,8 +28,13 @@ public class PriceListController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<PriceList>> getAllPriceList(){
-        List<PriceList> allPricelist = priceListService.getAllPriceList();
+    public ResponseEntity<FindAllPriceListDto> getAllPriceList(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer limit,
+            @RequestParam(required = false,value = "year-id") Integer yearId,
+            @RequestParam(required = false,value = "model-id") Integer modelId
+    ){
+        FindAllPriceListDto allPricelist = priceListService.getAllPriceList(page,limit,yearId,modelId);
         return new ResponseEntity<>(allPricelist,HttpStatusCode.valueOf(200));
     }
 

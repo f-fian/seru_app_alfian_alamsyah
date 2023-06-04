@@ -1,13 +1,17 @@
 package com.example.seru.service;
 
+import com.example.seru.dto.FindAllPriceListDto;
+import com.example.seru.dto.FindAllVehicleModelsDto;
 import com.example.seru.dto.PricelistDto;
 import com.example.seru.model.priceList.PriceList;
 import com.example.seru.model.vehicleModel.VehicleModels;
+import com.example.seru.model.vehicleTypes.VehicleTypes;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.repository.PriceListRepo;
 import com.example.seru.repository.VehicleModelsRepo;
 import com.example.seru.repository.VehicleYearsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,8 +45,50 @@ public class PriceListService {
 
 
     }
-    public List<PriceList> getAllPriceList() {
-        return priceListRepo.findAll();
+    public FindAllPriceListDto getAllPriceList(Integer page, Integer limit, Integer yearId, Integer modelId) {
+
+        if((page == null || limit==null) && typeId==null){
+            return FindAllVehicleModelsDto.builder()
+                    .total(vehicleModelsRepo.count())
+                    .limit(0)
+                    .skip(0)
+                    .data(vehicleModelsRepo.findAll())
+                    .build();
+        }
+
+        if(typeId == null){
+            Pageable pageable= PageRequest.of(page-1,limit);
+            Page<VehicleModels> data = vehicleModelsRepo.findAll(pageable);
+            return FindAllVehicleModelsDto.builder()
+                    .total(data.getTotalElements())
+                    .limit(limit)
+                    .skip((page-1)*2)
+                    .data(data.getContent())
+                    .build();
+        }
+
+        VehicleTypes vehicleTypes = vehicleTypesRepo.findById(typeId)
+                .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
+
+        if(page == null || limit==null){
+            List<VehicleModels> data = vehicleModelsRepo.findAllByVehicleTypes(vehicleTypes);
+            return FindAllVehicleModelsDto.builder()
+                    .total(data.stream().count())
+                    .limit(0)
+                    .skip(0)
+                    .data(data)
+                    .build();
+        }
+
+        Pageable pageable= PageRequest.of(page-1,limit);
+        Page<VehicleModels> data = vehicleModelsRepo.findAllByVehicleTypes(vehicleTypes,pageable);
+        return FindAllVehicleModelsDto.builder()
+                .total(data.getTotalElements())
+                .limit(limit)
+                .skip((page-1)*2)
+                .data(data.getContent())
+                .build();
+    }
     }
 
 
