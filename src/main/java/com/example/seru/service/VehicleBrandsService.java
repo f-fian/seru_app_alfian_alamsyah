@@ -31,8 +31,8 @@ public class VehicleBrandsService {
 
             return FindAllVehicleBrandsDto.builder()
                     .total(data.stream().count())
-                    .limit(0)
-                    .page(0)
+                    .limit(data.size())
+                    .page(1)
                     .skip(0)
                     .data(data)
                     .build();

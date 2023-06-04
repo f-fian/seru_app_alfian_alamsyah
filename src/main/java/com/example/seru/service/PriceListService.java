@@ -50,9 +50,9 @@ public class PriceListService {
         if((page == null || limit==null) && yearId==null && modelId==null){
             return FindAllPriceListDto.builder()
                     .total(priceListRepo.count())
-                    .limit(0)
+                    .limit(priceListRepo.findAll().size())
                     .skip(0)
-                    .page(0)
+                    .page(1)
                     .data(priceListRepo.findAll())
                     .build();
         }
@@ -63,8 +63,8 @@ public class PriceListService {
             List<PriceList> data = priceListRepo.findAllByVehicleYears(vehicleYears);
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
-                    .limit(0)
-                    .page(0)
+                    .limit(data.size())
+                    .page(1)
                     .skip(0)
                     .data(data)
                     .build();
@@ -76,8 +76,8 @@ public class PriceListService {
             List<PriceList> data = priceListRepo.findAllByVehicleModels(vehicleModels);
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
-                    .limit(0)
-                    .page(0)
+                    .limit(data.size())
+                    .page(1)
                     .skip(0)
                     .data(data)
                     .build();
@@ -133,8 +133,8 @@ public class PriceListService {
             List<PriceList> data = priceListRepo.findAllByVehicleYearsAndVehicleModels(vehicleYears,vehicleModels);
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
-                    .limit(0)
-                    .page(0)
+                    .limit(data.size())
+                    .page(1)
                     .skip(0)
                     .data(data)
                     .build();

@@ -42,8 +42,8 @@ public class VehicleModelsService {
         if((page == null || limit==null) && typeId==null){
             return FindAllVehicleModelsDto.builder()
                     .total(vehicleModelsRepo.count())
-                    .limit(0)
-                    .page(0)
+                    .limit(vehicleModelsRepo.findAll().size())
+                    .page(1)
                     .skip(0)
                     .data(vehicleModelsRepo.findAll())
                     .build();
@@ -68,8 +68,8 @@ public class VehicleModelsService {
             List<VehicleModels> data = vehicleModelsRepo.findAllByVehicleTypes(vehicleTypes);
             return FindAllVehicleModelsDto.builder()
                     .total(data.stream().count())
-                    .limit(0)
-                    .page(0)
+                    .limit(vehicleModelsRepo.findAll().size())
+                    .page(1)
                     .skip(0)
                     .data(data)
                     .build();
