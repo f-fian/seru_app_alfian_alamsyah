@@ -1,5 +1,6 @@
 package com.example.seru.security;
 
+import com.example.seru.model.user.UserDetailsImp;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

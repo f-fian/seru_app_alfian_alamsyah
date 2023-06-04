@@ -24,7 +24,9 @@ public class SecurityConfig {
             "vehicle-brands/**",
             "vehicle-types/**",
             "vehicle-models/**",
-            "price-list/**"};
+            "price-list/**",
+            "auth/**"
+    };
 
 
     @Autowired
