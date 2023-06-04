@@ -23,7 +23,8 @@ public class SecurityConfig {
             "vehicle-years/**",
             "vehicle-brands/**",
             "vehicle-types/**",
-            "vehicle-models/**"};
+            "vehicle-models/**",
+            "price-list/**"};
 
 
     @Autowired

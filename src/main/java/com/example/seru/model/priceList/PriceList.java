@@ -22,19 +22,23 @@ public class PriceList {
 
     @ManyToOne
     @JoinColumn(
-            name = "model_id",
-            referencedColumnName = "id"
-    )
-    private VehicleModels vehicleModels;
-
-    @ManyToOne
-    @JoinColumn(
             name = "year_id",
             referencedColumnName = "id"
     )
     private VehicleYears vehicleYears;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "model_id",
+            referencedColumnName = "id"
+    )
+    private VehicleModels vehicleModels;
 
 
-
+    public PriceList(Integer price, VehicleYears vehicleYears, VehicleModels vehicleModels) {
+        System.out.println("con");
+        this.price = price;
+        this.vehicleYears = vehicleYears;
+        this.vehicleModels = vehicleModels;
+    }
 }
