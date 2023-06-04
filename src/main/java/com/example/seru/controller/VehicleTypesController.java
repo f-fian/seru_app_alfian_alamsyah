@@ -1,5 +1,6 @@
 package com.example.seru.controller;
 
+import com.example.seru.dto.FindAllVehicleTypesDto;
 import com.example.seru.dto.VehicleTypesDto;
 import com.example.seru.model.vehicleTypes.VehicleTypes;
 import com.example.seru.service.VehicleTypesService;
@@ -23,15 +24,20 @@ public class VehicleTypesController {
 
     }
     @GetMapping("")
-    public ResponseEntity<List<VehicleTypes>> getAllVehicleTypes(
+    public ResponseEntity<FindAllVehicleTypesDto> getAllVehicleTypes(
             @RequestParam(required = false) Integer page,
             @RequestParam(required = false) Integer limit,
             @RequestParam(required = false,value = "brand-id") Integer brandId){
-        System.out.println(page);
-        System.out.println(limit);
-        System.out.println(brandId);
-        List<VehicleTypes> allVehicleTypes = vehicleTypesService.findAllVehicleTypes(page,limit,brandId);
-        return new ResponseEntity<>(allVehicleTypes,HttpStatusCode.valueOf(200));
+
+        FindAllVehicleTypesDto data = vehicleTypesService.findAllVehicleTypes(page,limit,brandId);
+
+        System.out.println("data");
+        System.out.println(data);
+
+        return new ResponseEntity<>(data,HttpStatusCode.valueOf(200));
+
+
+
     }
 
 
