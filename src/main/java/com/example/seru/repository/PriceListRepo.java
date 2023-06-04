@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PriceListRepo extends JpaRepository<PriceList,Integer> {
-    
+
     List<PriceList> findAllByVehicleYears(VehicleYears vehicleYears);
     List<PriceList> findAllByVehicleModels(VehicleModels vehicleModels);
     List<PriceList> findAllByVehicleYearsAndVehicleModels(

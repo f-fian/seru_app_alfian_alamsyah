@@ -47,19 +47,43 @@ public class PriceListService {
     }
     public FindAllPriceListDto getAllPriceList(Integer page, Integer limit, Integer yearId, Integer modelId) {
 
-        if((page == null || limit==null) && typeId==null){
-            return FindAllVehicleModelsDto.builder()
-                    .total(vehicleModelsRepo.count())
+        if((page == null || limit==null) && yearId==null && modelId==null){
+            return FindAllPriceListDto.builder()
+                    .total(priceListRepo.count())
                     .limit(0)
                     .skip(0)
-                    .data(vehicleModelsRepo.findAll())
+                    .data(priceListRepo.findAll())
                     .build();
         }
 
-        if(typeId == null){
+        if((page == null || limit==null) && yearId !=null && modelId==null){
+            VehicleYears vehicleYears = vehicleYearsRepo.findById(yearId)
+                    .orElseThrow(()-> new UsernameNotFoundException("vehicle years is not found"));
+            List<PriceList> data = priceListRepo.findAllByVehicleYears(vehicleYears);
+            return FindAllPriceListDto.builder()
+                    .total(data.stream().count())
+                    .limit(0)
+                    .skip(0)
+                    .data(data)
+                    .build();
+        }
+
+        if((page == null || limit==null) && yearId ==null && modelId != null){
+            VehicleModels vehicleModels = vehicleModelsRepo.findById(modelId)
+                    .orElseThrow(()-> new UsernameNotFoundException("model id is not found"));
+            List<PriceList> data = priceListRepo.findAllByVehicleModels(vehicleModels);
+            return FindAllPriceListDto.builder()
+                    .total(data.stream().count())
+                    .limit(0)
+                    .skip(0)
+                    .data(data)
+                    .build();
+        }
+
+        if((page != null && limit!=null) && yearId == null && modelId==null){
             Pageable pageable= PageRequest.of(page-1,limit);
-            Page<VehicleModels> data = vehicleModelsRepo.findAll(pageable);
-            return FindAllVehicleModelsDto.builder()
+            Page<PriceList> data = priceListRepo.findAll(pageable);
+            return FindAllPriceListDto.builder()
                     .total(data.getTotalElements())
                     .limit(limit)
                     .skip((page-1)*2)
@@ -67,12 +91,41 @@ public class PriceListService {
                     .build();
         }
 
-        VehicleTypes vehicleTypes = vehicleTypesRepo.findById(typeId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
+        if((page != null && limit!=null) && yearId != null && modelId==null){
+            Pageable pageable= PageRequest.of(page-1,limit);
+            VehicleYears vehicleYears = vehicleYearsRepo.findById(yearId)
+                    .orElseThrow(()-> new UsernameNotFoundException("vehicle years is not found"));
+            Page<PriceList> data = priceListRepo.findAllByVehicleYears(vehicleYears,pageable);
+            return FindAllPriceListDto.builder()
+                    .total(data.getTotalElements())
+                    .limit(limit)
+                    .skip((page-1)*2)
+                    .data(data.getContent())
+                    .build();
+        }
 
-        if(page == null || limit==null){
-            List<VehicleModels> data = vehicleModelsRepo.findAllByVehicleTypes(vehicleTypes);
-            return FindAllVehicleModelsDto.builder()
+        if((page != null && limit!=null) && yearId == null && modelId != null){
+            Pageable pageable= PageRequest.of(page-1,limit);
+            VehicleModels vehicleModels = vehicleModelsRepo.findById(modelId)
+                    .orElseThrow(()-> new UsernameNotFoundException("model id is not found"));
+            Page<PriceList> data = priceListRepo.findAllByVehicleModels(vehicleModels,pageable);
+            return FindAllPriceListDto.builder()
+                    .total(data.getTotalElements())
+                    .limit(limit)
+                    .skip((page-1)*2)
+                    .data(data.getContent())
+                    .build();
+        }
+
+
+        VehicleYears vehicleYears = vehicleYearsRepo.findById(yearId)
+                .orElseThrow(()-> new UsernameNotFoundException("vehicle years is not found"));
+        VehicleModels vehicleModels = vehicleModelsRepo.findById(modelId)
+                .orElseThrow(()-> new UsernameNotFoundException("model id is not found"));
+
+        if((page == null && limit==null) && yearId != null && modelId != null){
+            List<PriceList> data = priceListRepo.findAllByVehicleYearsAndVehicleModels(vehicleYears,vehicleModels);
+            return FindAllPriceListDto.builder()
                     .total(data.stream().count())
                     .limit(0)
                     .skip(0)
@@ -81,16 +134,16 @@ public class PriceListService {
         }
 
         Pageable pageable= PageRequest.of(page-1,limit);
-        Page<VehicleModels> data = vehicleModelsRepo.findAllByVehicleTypes(vehicleTypes,pageable);
-        return FindAllVehicleModelsDto.builder()
+        Page<PriceList> data = priceListRepo.findAllByVehicleYearsAndVehicleModels(vehicleYears,vehicleModels,pageable);
+        // if all true
+        return FindAllPriceListDto.builder()
                 .total(data.getTotalElements())
                 .limit(limit)
                 .skip((page-1)*2)
                 .data(data.getContent())
                 .build();
-    }
-    }
 
+    }
 
 
 
