@@ -23,13 +23,20 @@ public class VehicleTypesController {
 
     }
     @GetMapping("")
-    public ResponseEntity<List<VehicleTypes>> getAllVehicleTypes(){
-        List<VehicleTypes> allVehicleTypes = vehicleTypesService.findAllVehicleTypes();
+    public ResponseEntity<List<VehicleTypes>> getAllVehicleTypes(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer limit,
+            @RequestParam(required = false,value = "brand-id") Integer brandId){
+        System.out.println(page);
+        System.out.println(limit);
+        System.out.println(brandId);
+        List<VehicleTypes> allVehicleTypes = vehicleTypesService.findAllVehicleTypes(page,limit,brandId);
         return new ResponseEntity<>(allVehicleTypes,HttpStatusCode.valueOf(200));
     }
 
+
     @GetMapping("{vehicle-types-id}")
-    public ResponseEntity<VehicleTypes> getAllVehicleTypes(
+    public ResponseEntity<VehicleTypes> getVehicleTypes(
             @PathVariable("vehicle-types-id") Integer vehicleTypesId)
     {
         VehicleTypes VehicleTypes = vehicleTypesService.findVehicleTypes(vehicleTypesId);

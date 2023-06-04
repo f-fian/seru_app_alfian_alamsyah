@@ -5,9 +5,13 @@ import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.model.vehicleTypes.VehicleTypes;
 import com.example.seru.repository.VehicleBrandRepo;
 import com.example.seru.repository.VehicleTypesRepo;
+import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,8 +35,42 @@ public class VehicleTypesService {
 
 
     }
-    public List<VehicleTypes> findAllVehicleTypes() {
-        return vehicleTypesRepo.findAll();
+    public List<VehicleTypes> findAllVehicleTypes(Integer page, Integer limit, Integer brandId) {
+
+
+        if((page == null || limit==null) && brandId==null){
+            System.out.println("masuk sini atas");
+            return vehicleTypesRepo.findAll();
+        }
+        VehicleBrands vehicleBrands = vehicleBrandRepo.findById(brandId)
+                .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
+
+        if((page == null || limit==null)){
+            System.out.println("masuk sini atas");
+            return vehicleTypesRepo.findAllByVehicleBrands(vehicleBrands);
+        }
+
+        Pageable pageable= PageRequest.of(page-1,limit);
+        return vehicleTypesRepo.findAllByVehicleBrands(vehicleBrands,pageable).getContent();
+
+
+
+
+//        if(brandId != null){
+//            VehicleBrands vehicleBrands = vehicleBrandRepo.findById(brandId)
+//                    .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
+//
+//            if(page != null && limit !=null){
+//                Pageable pageable= PageRequest.of(page-1,limit);
+//                return vehicleTypesRepo.findAllByVehicleBrands(vehicleBrands,pageable).getContent();
+//            }
+//
+//        }
+//
+//        return vehicleTypesRepo.findAll();
+
+
+
     }
 
     public VehicleTypes findVehicleTypes(Integer vehicleTypesId) {

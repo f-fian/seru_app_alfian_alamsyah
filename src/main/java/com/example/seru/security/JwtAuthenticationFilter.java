@@ -33,11 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       @NonNull HttpServletResponse response,
       @NonNull FilterChain filterChain
   ) throws ServletException, IOException {
-    if (request.getServletPath().contains("/api/v1/auth")) {
+    if (request.getServletPath().contains("/auth")) {
       filterChain.doFilter(request, response);
       return;
     }
-
     System.out.println("masuk filter");
     final String authHeader = request.getHeader("Authorization");
     final String jwt;
@@ -47,18 +46,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       return;
     }
     jwt = authHeader.substring(7);
-    System.out.println("jwt");
-    System.out.println(jwt);
     userEmail = jwtService.extractUsername(jwt);
-    System.out.println(userEmail);
     if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = this.userDetailsServiceImp.loadUserByUsername(userEmail);
-      var isTokenValid = tokenRepository.findByToken(jwt)
-          .map(t -> !t.isExpired() && !t.isRevoked())
-          .orElse(false);
 
-      System.out.println("is token valid");
-      System.out.println(isTokenValid);
+      // is token valid ngak di pake soalnya ngak nyimpen token ke database
+//      var isTokenValid = tokenRepository.findByToken(jwt)
+//          .map(t -> !t.isExpired() && !t.isRevoked())
+//          .orElse(false);
       if (jwtService.isTokenValid(jwt, userDetails)) {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
             userDetails,
@@ -72,7 +67,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
     }
-    System.out.println("bawah");
     filterChain.doFilter(request, response);
   }
 }

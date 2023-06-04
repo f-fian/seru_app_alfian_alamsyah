@@ -8,10 +8,13 @@ import com.example.seru.repository.PriceListRepo;
 import com.example.seru.repository.VehicleModelsRepo;
 import com.example.seru.repository.VehicleYearsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PriceListService {
@@ -36,10 +39,15 @@ public class PriceListService {
         priceListRepo.save(priceList);
         return priceList;
 
+
     }
     public List<PriceList> getAllPriceList() {
         return priceListRepo.findAll();
     }
+
+
+
+
     public PriceList getPriceList(Integer priceListId) {
         return priceListRepo.findById(priceListId)
                 .orElseThrow(()->new UsernameNotFoundException("price list id is not found"));
