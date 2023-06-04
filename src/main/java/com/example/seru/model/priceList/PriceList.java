@@ -34,7 +34,6 @@ public class PriceList {
     )
     private VehicleModels vehicleModels;
 
-
     public PriceList(Integer price, VehicleYears vehicleYears, VehicleModels vehicleModels) {
         System.out.println("con");
         this.price = price;

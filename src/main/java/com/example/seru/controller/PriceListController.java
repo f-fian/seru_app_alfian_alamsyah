@@ -40,6 +40,21 @@ public class PriceListController {
         return new ResponseEntity<>(pricelist,HttpStatusCode.valueOf(200));
     }
 
+    @PutMapping("{price-list-id}")
+    public ResponseEntity<PriceList> updatePriceList(
+            @PathVariable("price-list-id") Integer priceListId,
+            @RequestBody PricelistDto pricelistDto)
+    {
+        PriceList pricelist = priceListService.updatePriceList(pricelistDto,priceListId);
+        return new ResponseEntity<>(pricelist,HttpStatusCode.valueOf(201));
+    }
+    @DeleteMapping("{price-list-id}")
+    public ResponseEntity<Void> deletePriceList(
+            @PathVariable("price-list-id") Integer priceListId)
+    {
+        priceListService.deletePriceList(priceListId);
+        return new ResponseEntity<>(HttpStatusCode.valueOf(204));
+    }
 
 }
 

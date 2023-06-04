@@ -44,4 +44,31 @@ public class PriceListService {
         return priceListRepo.findById(priceListId)
                 .orElseThrow(()->new UsernameNotFoundException("price list id is not found"));
     }
+
+    public PriceList updatePriceList(PricelistDto pricelistDto, Integer priceListId) {
+
+        PriceList priceList = priceListRepo.findById(priceListId)
+                .orElseThrow(()->new UsernameNotFoundException("price list id is not found"));
+
+        if(pricelistDto.model_id() != null){
+            VehicleModels vehicleModels = vehicleModelsRepo.findById(pricelistDto.model_id())
+                    .orElseThrow(()->new UsernameNotFoundException("vehicle model id is not found"));
+            priceList.setVehicleModels(vehicleModels);
+        }
+        if(pricelistDto.year_id() != null){
+            VehicleYears vehicleYears = vehicleYearsRepo.findById(pricelistDto.year_id())
+                    .orElseThrow(()->new UsernameNotFoundException("vehicle years id is not found"));
+            priceList.setVehicleYears(vehicleYears);
+        }
+        if(pricelistDto.price() != null){
+            priceList.setPrice(pricelistDto.price());
+        }
+
+        priceListRepo.save(priceList);
+        return priceList;
+    }
+
+    public void deletePriceList(Integer priceListId) {
+        priceListRepo.deleteById(priceListId);
+    }
 }
