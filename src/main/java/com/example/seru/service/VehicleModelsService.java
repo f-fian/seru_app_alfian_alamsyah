@@ -3,6 +3,7 @@ package com.example.seru.service;
 import com.example.seru.dto.FindAllVehicleModelsDto;
 import com.example.seru.dto.FindAllVehicleTypesDto;
 import com.example.seru.dto.VehicleModelsDto;
+import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.model.vehicleModel.VehicleModels;
@@ -11,6 +12,7 @@ import com.example.seru.repository.VehicleModelsRepo;
 import com.example.seru.repository.VehicleTypesRepo;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,9 +34,15 @@ public class VehicleModelsService {
     public VehicleModels addVehicleModel(VehicleModelsDto vehicleModelsDto) {
         VehicleTypes vehicleTypes = vehicleTypesRepo.findById(vehicleModelsDto.type_id())
                 .orElseThrow(()->new ResourceNotFoundExeption("vehicle types id is not found"));
-        VehicleModels vehicleModels = new VehicleModels(vehicleModelsDto.name(),vehicleTypes);
-        vehicleModelsRepo.save(vehicleModels);
-        return vehicleModels;
+        try{
+            VehicleModels vehicleModels = new VehicleModels(vehicleModelsDto.name(),vehicleTypes);
+            vehicleModelsRepo.save(vehicleModels);
+            return vehicleModels;
+        }catch (DataAccessException error){
+            System.out.println("error");
+            throw new DataAlreadyExistexeption("Data is already exist please insert another name");
+        }
+
     }
 
     public FindAllVehicleModelsDto getAllVehicleModels(Integer page, Integer limit, Integer typeId) {

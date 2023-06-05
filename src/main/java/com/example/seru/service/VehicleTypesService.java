@@ -2,6 +2,7 @@ package com.example.seru.service;
 
 import com.example.seru.dto.FindAllVehicleTypesDto;
 import com.example.seru.dto.VehicleTypesDto;
+import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.model.vehicleTypes.VehicleTypes;
@@ -9,6 +10,7 @@ import com.example.seru.repository.VehicleBrandRepo;
 import com.example.seru.repository.VehicleTypesRepo;
 import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,9 +34,15 @@ public class VehicleTypesService {
         VehicleBrands vehicleBrands = vehicleBrandRepo.findById(vehicleTypesDto.brand_id())
                 .orElseThrow(()-> new ResourceNotFoundExeption("vehicle brands id is not found"));
 
-        VehicleTypes vehicleTypes = new VehicleTypes(vehicleTypesDto.name(),vehicleBrands);
-        vehicleTypesRepo.save(vehicleTypes);
-        return vehicleTypes;
+        try {
+            VehicleTypes vehicleTypes = new VehicleTypes(vehicleTypesDto.name(),vehicleBrands);
+            vehicleTypesRepo.save(vehicleTypes);
+            return vehicleTypes;
+        }catch (DataAccessException exception){
+            System.out.println("error");
+            throw new DataAlreadyExistexeption("Data is already exist please insert another name");
+        }
+
 
 
     }
@@ -87,24 +95,6 @@ public class VehicleTypesService {
                 .skip((page-1)*2)
                 .data(data.getContent())
                 .build();
-
-
-
-
-//        if(brandId != null){
-//            VehicleBrands vehicleBrands = vehicleBrandRepo.findById(brandId)
-//                    .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
-//
-//            if(page != null && limit !=null){
-//                Pageable pageable= PageRequest.of(page-1,limit);
-//                return vehicleTypesRepo.findAllByVehicleBrands(vehicleBrands,pageable).getContent();
-//            }
-//
-//        }
-//
-//        return vehicleTypesRepo.findAll();
-
-
 
     }
 

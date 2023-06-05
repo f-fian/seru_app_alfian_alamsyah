@@ -28,11 +28,10 @@ public class SecurityConfig {
             "vehicle-brands/**",
             "vehicle-types/**",
             "vehicle-models/**",
-            "price-list/**",
-            "error"
+            "price-list/**"
     };
 
-    String[] ADMIN_URL = {"test-admin","user/**"};
+    String[] ADMIN_URL = {"test-admin","users/**"};
 
 
     @Autowired
@@ -45,6 +44,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("error").permitAll()
                 .requestMatchers(HttpMethod.GET,WHITE_LIST).permitAll()
                 .requestMatchers("authenticate","register").permitAll()
                 .requestMatchers(HttpMethod.POST,WHITE_LIST).hasAuthority("ADMIN")

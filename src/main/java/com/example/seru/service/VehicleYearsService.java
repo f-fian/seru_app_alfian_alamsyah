@@ -1,10 +1,12 @@
 package com.example.seru.service;
 
 import com.example.seru.dto.FindAllVehicleYearsDto;
+import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.repository.VehicleYearsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,8 +26,18 @@ public class VehicleYearsService {
     private VehicleYearsRepo vehicleYearsRepo;
     public VehicleYears addVehicleYears(VehicleYears vehicleYears) {
         VehicleYears newVehicleYears = new VehicleYears(vehicleYears.getYear());
-        vehicleYearsRepo.save(newVehicleYears);
-        return newVehicleYears;
+
+        try{
+            System.out.println("sini?");
+            System.out.println(newVehicleYears);
+            vehicleYearsRepo.save(newVehicleYears);
+            return newVehicleYears;
+        }catch (DataAccessException error){
+            System.out.println("error");
+            throw new DataAlreadyExistexeption("Data is already exist please insert another year");
+        }
+
+
     }
 
     public FindAllVehicleYearsDto getAllVehicleYears(Integer page, Integer limit) {

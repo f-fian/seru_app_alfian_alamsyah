@@ -1,9 +1,11 @@
 package com.example.seru.service;
 
 import com.example.seru.dto.UserRegistrationDto;
+import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.model.user.User;
 import com.example.seru.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,15 +27,22 @@ public class UserService {
                 user.getIs_admin()
         );
 
-        userRepo.save(newUser);
+        try{
+            userRepo.save(newUser);
+            UserRegistrationDto registeredUser = new UserRegistrationDto(
+                    newUser.getId(),
+                    newUser.getUsername(),
+                    newUser.getIs_admin()
+            );
+            return registeredUser;
+        }catch (DataAccessException error){
+            System.out.println("error");
+            throw new DataAlreadyExistexeption("User is already exist, please insert another username");
+        }
 
-        UserRegistrationDto registeredUser = new UserRegistrationDto(
-                newUser.getId(),
-                newUser.getUsername(),
-                newUser.getIs_admin()
-        );
 
-        return registeredUser;
+
+
     }
 
     public List<User> getAllUser() {

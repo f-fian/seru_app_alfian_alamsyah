@@ -3,6 +3,7 @@ package com.example.seru.service;
 import com.example.seru.dto.FindAllPriceListDto;
 import com.example.seru.dto.FindAllVehicleModelsDto;
 import com.example.seru.dto.PricelistDto;
+import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.priceList.PriceList;
 import com.example.seru.model.vehicleModel.VehicleModels;
@@ -12,6 +13,7 @@ import com.example.seru.repository.PriceListRepo;
 import com.example.seru.repository.VehicleModelsRepo;
 import com.example.seru.repository.VehicleYearsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,11 +41,10 @@ public class PriceListService {
         VehicleModels vehicleModels = vehicleModelsRepo.findById(pricelistDto.model_id())
                 .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
 
-        PriceList priceList = new PriceList(pricelistDto.price(),vehicleYears,vehicleModels);
 
+        PriceList priceList = new PriceList(pricelistDto.price(),vehicleYears,vehicleModels);
         priceListRepo.save(priceList);
         return priceList;
-
 
     }
     public FindAllPriceListDto getAllPriceList(Integer page, Integer limit, Integer yearId, Integer modelId) {

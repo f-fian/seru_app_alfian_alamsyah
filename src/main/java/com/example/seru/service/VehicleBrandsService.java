@@ -1,10 +1,12 @@
 package com.example.seru.service;
 
 import com.example.seru.dto.FindAllVehicleBrandsDto;
+import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.repository.VehicleBrandRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +22,16 @@ public class VehicleBrandsService {
     private VehicleBrandRepo vehicleBrandRepo;
 
     public VehicleBrands addVehicleBrands(VehicleBrands vehicleBrands) {
-        VehicleBrands newVehicleBrands = new VehicleBrands(vehicleBrands.getName());
-        return vehicleBrandRepo.save(newVehicleBrands);
+
+        try{
+            VehicleBrands newVehicleBrands = new VehicleBrands(vehicleBrands.getName());
+            return vehicleBrandRepo.save(newVehicleBrands);
+        }catch (DataAccessException error){
+            System.out.println("error");
+            throw new DataAlreadyExistexeption("Data is already exist please insert another name");
+        }
+
+
     }
 
     public FindAllVehicleBrandsDto getAllVehicleBrands(Integer page, Integer limit) {
