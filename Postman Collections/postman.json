@@ -676,6 +676,18 @@
 						"url": "localhost:8080/price-list/1"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "2450d31c-1be3-4c6e-a3a3-eb9910e77b6e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "70ab1e77-80a8-465e-b593-d3412ce523ce"
