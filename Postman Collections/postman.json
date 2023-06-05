@@ -481,20 +481,7 @@
 		},
 		{
 			"name": "vehicle models",
-			"item": [
-				{
-					"name": "New Request",
-					"id": "8d677982-cea3-44c4-bebc-818c9ab1391d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			],
+			"item": [],
 			"id": "8616361e-de84-4e38-81c1-98ba8c4cda94"
 		}
 	]
