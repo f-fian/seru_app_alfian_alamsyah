@@ -631,8 +631,7 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": "localhost:8080/price-list"
+						"header": []
 					},
 					"response": []
 				},
