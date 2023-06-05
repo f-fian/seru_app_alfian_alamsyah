@@ -1,6 +1,6 @@
 # seru_app_alfian_alamsyah
 
-# Gambaran besar API
+## Gambaran besar API
 
 - API telah di deploy ke server dengan domain https://seruappalfianalamsyah-production.up.railway.app
   juga sudah dimasukan data dummy untuk mencoba API
@@ -21,8 +21,8 @@
   saat ini yang nantinya akan digantikan dengan new_password. apabila salah akan throw exeption.
   kedua filed old_password dan new_password harus diisi untuk mengganti password.
 
-- updaetUser https://seruappalfianalamsyah-production.up.railway.app/users/3
-  {
+- updaetUser https://seruappalfianalamsyah-production.up.railway.app/users/3<br>
+  body {
   "old_password":"123",
   "new_password":"234"
   }
@@ -30,93 +30,88 @@
 - untuk menggunakan pagination, ada dua request param yang harus diberikan yaitu "limit" dan "page"
   kedua request param tersebut harus diberikan, apabila tidak di berikan atau hanya salah satu
   yang diberikan maka pagination tidak akan berfungsi, dan API secata default akan melakukan findALL biasa
-  contoh API dengan pagination "https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2"
+  contoh API dengan pagination <br>
+  "https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2"
 
 - untuk mengupdate data dengan PUT METHODE, tidak harus semua filed diisi, bisi hanya beberapa filed atau semua filed untuk bisa mengupdate DATA
-  contoh, mengganti data vehicle models
-- PUT https://seruappalfianalamsyah-production.up.railway.app/price-list/1
-- {
+  contoh, mengganti data vehicle models<br>
+  PUT https://seruappalfianalamsyah-production.up.railway.app/price-list/1<br>
+  body {
   "price":1,
   "model_id":1,
   "year_id":1
-  }
-- bisa juga filed yang diisi tidak lengkap. Jadi bebas untuk apa dan berapa data field yang diganti
-
-- {
+  }<br>
+  bisa juga filed yang diisi tidak lengkap. Jadi bebas untuk apa dan berapa data field yang diganti<br>
+  body {
   "year_id":1
   }
 
-## Implementasi filter tiap entity (API) dengan column yang tersedia
+- Implementasi filter tiap entity (API) dengan column yang tersedia
 
 Contoh: Kita punya data Vehicle Brand (vehicle_brands) dengan ID = 1. Maka kita bisa melakukan filter dengan kolom brand_id seperti di bawah ini.
 Endpoint: /vehicle-types?brand_id=1
 
-## Ada filed unique di table
+- Ada filed unique di table
 
 Pada table user field yang unik adalah field username, sedangkan pada table lain filed
 yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed unique ini. Apabila dilakukan akan throw exeption
 
-# Register and Authentication API
+## Register and Authentication API
 
-## register
+- register
 
-- https://seruappalfianalamsyah-production.up.railway.app/register
-- {
-  "username":"adik",  
-  "password":"123",
-  "is_admin":true
-  }
+https://seruappalfianalamsyah-production.up.railway.app/register<br>
+body {
+"username":"adik",  
+ "password":"123",
+"is_admin":true
+}
 
-## authentication
+- authentication
 
-- https://seruappalfianalamsyah-production.up.railway.app/authenticate
-- {
-  "username":"adik",
-  "password":"123"
-  }
+https://seruappalfianalamsyah-production.up.railway.app/authenticate<br>
+body {
+"username":"adik",
+"password":"123"
+}
 
-# USER API
+## USER API
 
-## getUser
+- getUser
+  https://seruappalfianalamsyah-production.up.railway.app/users/2
 
-- https://seruappalfianalamsyah-production.up.railway.app/users/2
+- getAllUser
+  https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2
 
-## getAllUser
+- updaetUser
 
-- https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2
+https://seruappalfianalamsyah-production.up.railway.app/users/3<br>
+body {
+"username":"jaya",
+"is_admin":true,
+"old_password":"123",
+"new_password":"234"
+}<br>
+ada fitur untuk update user password. dengan syarat old_password harus sama dengan password
+saat ini yang nantinya akan digantikan dengan new_password. apabila salah akan throw exeption.
+kedua filed old_password dan new_password harus diisi untuk mengganti password.
 
-## updaetUser
+- deleteUser
 
-- https://seruappalfianalamsyah-production.up.railway.app/users/3
-- {
-  "username":"jaya",
-  "is_admin":true,
-  "old_password":"123",
-  "new_password":"234"
-  }
-- ada fitur untuk update user password. dengan syarat old_password harus sama dengan password
-  saat ini yang nantinya akan digantikan dengan new_password. apabila salah akan throw exeption.
-  kedua filed old_password dan new_password harus diisi untuk mengganti password.
+https://seruappalfianalamsyah-production.up.railway.app/users/7
 
-## deleteUser
+## Vehicle Years API
 
-- https://seruappalfianalamsyah-production.up.railway.app/users/7
+- addVehicleYears
 
-# Vehicle Years API
+https://seruappalfianalamsyah-production.up.railway.app/vehicle-years<br>
+body { "year":"2009"}
 
-## addVehicleYears
+- getVEhicleYears
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-years
+https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1
 
-- {
-  "year":"2009"
-  }
-
-## getVEhicleYears
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1
-
-## getAllVehicleYears
+- getAllVehicleYears
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-years?limit=2&page=2
 
@@ -124,7 +119,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1
 
-- {
+- body {
   "year":"2009"
   }
 
@@ -138,7 +133,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands
 
-- {
+- body {
   "name":"red eye"
   }
 
@@ -154,7 +149,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/8
 
-- {
+- body {
   "name":"red eye"
   }
 
@@ -167,7 +162,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 ## addVehicleTypes
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-types
-- {
+- body {
   "name":"honda 20",
   "brand_id":2
   }
@@ -184,7 +179,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/11
 
-- {
+- body {
   "name":"honda baru",
   "brand_id":1
   }
@@ -199,7 +194,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-models
 
-- {
+- body {
   "name":"honda 1 model aaa",
   "type_id":1
   }
@@ -216,7 +211,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1
 
-- {
+- body {
   "name":"honda 1 model baru",
   "type_id":1
   }
@@ -231,7 +226,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/price-list
 
-- {
+- body {
   "price":746492,
   "model_id":1,
   "year_id":1
@@ -249,7 +244,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 - https://seruappalfianalamsyah-production.up.railway.app/price-list/1
 
-- {
+- body {
   "price":99999,
   "model_id":1,
   "year_id":2
