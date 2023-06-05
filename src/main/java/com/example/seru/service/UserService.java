@@ -1,7 +1,9 @@
 package com.example.seru.service;
 
 import com.example.seru.dto.UserRegistrationDto;
+import com.example.seru.dto.UserUpdateDto;
 import com.example.seru.exeption.DataAlreadyExistexeption;
+import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.user.User;
 import com.example.seru.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -73,5 +75,35 @@ public class UserService {
     public String deleteUser(Integer userId) {
         userRepo.deleteById(userId);
         return "User Telah berhasil di delete";
+    }
+
+    public UserRegistrationDto updateUser(UserUpdateDto userUpdateDto, Integer userId) {
+
+        User user = userRepo.findById(userId)
+                .orElseThrow(()-> new ResourceNotFoundExeption("user id is not found"));
+
+        if(userUpdateDto.username() != null){
+            user.setUsername(userUpdateDto.username());
+        }
+        if(userUpdateDto.is_admin() != null){
+            user.setIs_admin(userUpdateDto.is_admin());
+        }
+        if(userUpdateDto.new_password() != null && userUpdateDto.old_password() != null){
+            if(!(passwordEncoder.matches(userUpdateDto.old_password(),user.getPassword()))){
+                System.out.println(passwordEncoder);
+                System.out.println(user.getPassword());
+                throw new ResourceNotFoundExeption("old password is not same");
+            }
+            user.setPassword(passwordEncoder.encode(userUpdateDto.new_password()));
+
+        }
+        userRepo.save(user);
+
+        return new UserRegistrationDto(
+                user.getId(),
+                user.getUsername(),
+                user.getIs_admin(),
+                user.getCreatedAt(),
+                user.getUpdatedAt());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.seru.controller;
 
 import com.example.seru.dto.UserRegistrationDto;
+import com.example.seru.dto.UserUpdateDto;
 import com.example.seru.model.user.User;
 import com.example.seru.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,16 @@ public class UserController {
         return userService.deleteUser(userId);
     }
 
+
+    @PutMapping("/{userId}")
+    public UserRegistrationDto updateUser(
+            @PathVariable Integer userId,
+            @RequestBody UserUpdateDto userUpdateDto)
+
+    {
+        return userService.updateUser(userUpdateDto,userId);
+
+    }
 
 
 
