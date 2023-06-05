@@ -349,6 +349,18 @@
 						"url": "localhost:8080/vehicle-brands/3"
 					},
 					"response": []
+				},
+				{
+					"name": "delete vehicle brands",
+					"id": "2f022314-0870-4cac-9189-2d8d59351485",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "b77cdaae-554f-4f46-b41b-eaf7d4b9d873"
