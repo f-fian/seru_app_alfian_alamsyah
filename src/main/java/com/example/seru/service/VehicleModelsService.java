@@ -3,6 +3,7 @@ package com.example.seru.service;
 import com.example.seru.dto.FindAllVehicleModelsDto;
 import com.example.seru.dto.FindAllVehicleTypesDto;
 import com.example.seru.dto.VehicleModelsDto;
+import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.model.vehicleModel.VehicleModels;
 import com.example.seru.model.vehicleTypes.VehicleTypes;
@@ -30,7 +31,7 @@ public class VehicleModelsService {
 
     public VehicleModels addVehicleModel(VehicleModelsDto vehicleModelsDto) {
         VehicleTypes vehicleTypes = vehicleTypesRepo.findById(vehicleModelsDto.type_id())
-                .orElseThrow(()->new UsernameNotFoundException("vehicle types id is not found"));
+                .orElseThrow(()->new ResourceNotFoundExeption("vehicle types id is not found"));
         VehicleModels vehicleModels = new VehicleModels(vehicleModelsDto.name(),vehicleTypes);
         vehicleModelsRepo.save(vehicleModels);
         return vehicleModels;
@@ -62,7 +63,7 @@ public class VehicleModelsService {
         }
 
         VehicleTypes vehicleTypes = vehicleTypesRepo.findById(typeId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
+                .orElseThrow(()->new ResourceNotFoundExeption("vehicle types id is not found"));
 
         if(page == null || limit==null){
             List<VehicleModels> data = vehicleModelsRepo.findAllByVehicleTypes(vehicleTypes);
@@ -95,16 +96,16 @@ public class VehicleModelsService {
 
     public VehicleModels getVehicleModel(Integer vehicleModelsId) {
         return vehicleModelsRepo.findById(vehicleModelsId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle models id is not found"));
+                .orElseThrow(()->new ResourceNotFoundExeption("vehicle models id is not found"));
     }
 
-    public VehicleModels updateVehicleModel(VehicleModelsDto vehicleModelsDto,Integer vehiclModelId){
+    public VehicleModels updateVehicleModel(VehicleModelsDto vehicleModelsDto,Integer vehicleModelId){
 
-        VehicleModels vehicleModels = vehicleModelsRepo.findById(vehiclModelId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle model id is not found"));
+        VehicleModels vehicleModels = vehicleModelsRepo.findById(vehicleModelId)
+                .orElseThrow(()->new ResourceNotFoundExeption("vehicle models id is not found"));
 
         VehicleTypes vehicleTypes = vehicleTypesRepo.findById(vehicleModelsDto.type_id())
-                .orElseThrow(()->new UsernameNotFoundException("model type id is not found"));
+                .orElseThrow(()->new ResourceNotFoundExeption("vehicle models type id is not found"));
 
         vehicleModels.setName(vehicleModelsDto.name());
         vehicleModels.setVehicleTypes(vehicleTypes);
@@ -113,6 +114,8 @@ public class VehicleModelsService {
     }
 
     public void deleteVehicleModel(Integer vehicleModelId){
+        vehicleModelsRepo.findById(vehicleModelId)
+                .orElseThrow(()->new ResourceNotFoundExeption("vehicle models id is not found"));
         vehicleModelsRepo.deleteById(vehicleModelId);
     }
 }

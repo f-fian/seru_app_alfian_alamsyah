@@ -1,16 +1,21 @@
 package com.example.seru.service;
 
 import com.example.seru.dto.FindAllVehicleYearsDto;
+import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.repository.VehicleYearsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
+import java.lang.module.ResolutionException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class VehicleYearsService {
@@ -48,18 +53,20 @@ public class VehicleYearsService {
 
     public VehicleYears getVehicleYears(Integer vehicleYearsId) {
         return vehicleYearsRepo.findById(vehicleYearsId)
-                .orElseThrow(()-> new UsernameNotFoundException("vehicle Id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
     }
 
 
 
     public void deleteVehicleYears(Integer vehicleYearsId) {
+        vehicleYearsRepo.findById(vehicleYearsId)
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
         vehicleYearsRepo.deleteById(vehicleYearsId);
     }
 
     public VehicleYears updateVehicleYears(VehicleYears newVehicleYears, Integer vehicleYearsId) {
         VehicleYears vehicleYears = vehicleYearsRepo.findById(vehicleYearsId)
-                .orElseThrow(()-> new UsernameNotFoundException("Vehicle years id not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
         vehicleYears.setYear(newVehicleYears.getYear());
         vehicleYearsRepo.save(vehicleYears);
         return vehicleYears;

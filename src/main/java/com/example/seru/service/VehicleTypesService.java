@@ -2,6 +2,7 @@ package com.example.seru.service;
 
 import com.example.seru.dto.FindAllVehicleTypesDto;
 import com.example.seru.dto.VehicleTypesDto;
+import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.vehicleBrands.VehicleBrands;
 import com.example.seru.model.vehicleTypes.VehicleTypes;
 import com.example.seru.repository.VehicleBrandRepo;
@@ -29,7 +30,7 @@ public class VehicleTypesService {
 
     public VehicleTypes addVehicleTypes(VehicleTypesDto vehicleTypesDto) {
         VehicleBrands vehicleBrands = vehicleBrandRepo.findById(vehicleTypesDto.brand_id())
-                .orElseThrow(()->new RuntimeException("brand-id not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle brands id is not found"));
 
         VehicleTypes vehicleTypes = new VehicleTypes(vehicleTypesDto.name(),vehicleBrands);
         vehicleTypesRepo.save(vehicleTypes);
@@ -64,7 +65,7 @@ public class VehicleTypesService {
         }
 
         VehicleBrands vehicleBrands = vehicleBrandRepo.findById(brandId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle brand id not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle brands id is not found"));
 
         if(page == null || limit==null){
             List<VehicleTypes> data = vehicleTypesRepo.findAllByVehicleBrands(vehicleBrands);
@@ -109,16 +110,16 @@ public class VehicleTypesService {
 
     public VehicleTypes findVehicleTypes(Integer vehicleTypesId) {
         return vehicleTypesRepo.findById(vehicleTypesId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle types id not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle types id is not found"));
     }
 
     public VehicleTypes updateVehicleTypes(VehicleTypesDto vehicleTypesDto, Integer vehicleTypesId) {
 
         VehicleTypes vehicleTypes = vehicleTypesRepo.findById(vehicleTypesId)
-                .orElseThrow(()->new UsernameNotFoundException("vehicle types id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle types id is not found"));
 
         VehicleBrands vehicleBrands = vehicleBrandRepo.findById(vehicleTypesDto.brand_id())
-                .orElseThrow(()->new UsernameNotFoundException("vehcile brands id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle brands id is not found"));
 
         vehicleTypes.setName(vehicleTypesDto.name());
         vehicleTypes.setVehicleBrands(vehicleBrands);
@@ -129,6 +130,8 @@ public class VehicleTypesService {
     }
 
     public void deleteVehicleTypes(Integer vehicleTypesId) {
+        vehicleTypesRepo.findById(vehicleTypesId)
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle types id is not found"));
         vehicleTypesRepo.deleteById(vehicleTypesId);
     }
 }

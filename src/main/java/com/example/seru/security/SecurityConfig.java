@@ -29,7 +29,8 @@ public class SecurityConfig {
             "vehicle-types/**",
             "vehicle-models/**",
             "price-list/**",
-            "auth/**"
+            "auth/**",
+            "error"
     };
 
 

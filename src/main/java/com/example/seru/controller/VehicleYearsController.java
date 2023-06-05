@@ -4,11 +4,13 @@ import com.example.seru.dto.FindAllVehicleYearsDto;
 import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.service.VehicleYearsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("vehicle-years")

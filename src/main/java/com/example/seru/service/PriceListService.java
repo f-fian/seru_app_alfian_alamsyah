@@ -3,6 +3,7 @@ package com.example.seru.service;
 import com.example.seru.dto.FindAllPriceListDto;
 import com.example.seru.dto.FindAllVehicleModelsDto;
 import com.example.seru.dto.PricelistDto;
+import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.priceList.PriceList;
 import com.example.seru.model.vehicleModel.VehicleModels;
 import com.example.seru.model.vehicleTypes.VehicleTypes;
@@ -34,9 +35,9 @@ public class PriceListService {
     public PriceList addPriceList(PricelistDto pricelistDto) {
 
         VehicleYears vehicleYears = vehicleYearsRepo.findById(pricelistDto.year_id())
-                .orElseThrow(()-> new UsernameNotFoundException("vehicle year id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
         VehicleModels vehicleModels = vehicleModelsRepo.findById(pricelistDto.model_id())
-                .orElseThrow(()-> new UsernameNotFoundException("vehicle year id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
 
         PriceList priceList = new PriceList(pricelistDto.price(),vehicleYears,vehicleModels);
 
@@ -59,7 +60,7 @@ public class PriceListService {
 
         if((page == null || limit==null) && yearId !=null && modelId==null){
             VehicleYears vehicleYears = vehicleYearsRepo.findById(yearId)
-                    .orElseThrow(()-> new UsernameNotFoundException("vehicle years is not found"));
+                    .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years is not found"));
             List<PriceList> data = priceListRepo.findAllByVehicleYears(vehicleYears);
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
@@ -72,7 +73,7 @@ public class PriceListService {
 
         if((page == null || limit==null) && yearId ==null && modelId != null){
             VehicleModels vehicleModels = vehicleModelsRepo.findById(modelId)
-                    .orElseThrow(()-> new UsernameNotFoundException("model id is not found"));
+                    .orElseThrow(()-> new ResourceNotFoundExeption("model id is not found"));
             List<PriceList> data = priceListRepo.findAllByVehicleModels(vehicleModels);
             return FindAllPriceListDto.builder()
                     .total(data.stream().count())
@@ -98,7 +99,7 @@ public class PriceListService {
         if((page != null && limit!=null) && yearId != null && modelId==null){
             Pageable pageable= PageRequest.of(page-1,limit);
             VehicleYears vehicleYears = vehicleYearsRepo.findById(yearId)
-                    .orElseThrow(()-> new UsernameNotFoundException("vehicle years is not found"));
+                    .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years is not found"));
             Page<PriceList> data = priceListRepo.findAllByVehicleYears(vehicleYears,pageable);
             return FindAllPriceListDto.builder()
                     .total(data.getTotalElements())
@@ -112,7 +113,7 @@ public class PriceListService {
         if((page != null && limit!=null) && yearId == null && modelId != null){
             Pageable pageable= PageRequest.of(page-1,limit);
             VehicleModels vehicleModels = vehicleModelsRepo.findById(modelId)
-                    .orElseThrow(()-> new UsernameNotFoundException("model id is not found"));
+                    .orElseThrow(()-> new ResourceNotFoundExeption("vehicle models id is not found"));
             Page<PriceList> data = priceListRepo.findAllByVehicleModels(vehicleModels,pageable);
             return FindAllPriceListDto.builder()
                     .total(data.getTotalElements())
@@ -125,9 +126,9 @@ public class PriceListService {
 
 
         VehicleYears vehicleYears = vehicleYearsRepo.findById(yearId)
-                .orElseThrow(()-> new UsernameNotFoundException("vehicle years is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years is not found"));
         VehicleModels vehicleModels = vehicleModelsRepo.findById(modelId)
-                .orElseThrow(()-> new UsernameNotFoundException("model id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle models id is not found"));
 
         if((page == null && limit==null) && yearId != null && modelId != null){
             List<PriceList> data = priceListRepo.findAllByVehicleYearsAndVehicleModels(vehicleYears,vehicleModels);
@@ -157,22 +158,22 @@ public class PriceListService {
 
     public PriceList getPriceList(Integer priceListId) {
         return priceListRepo.findById(priceListId)
-                .orElseThrow(()->new UsernameNotFoundException("price list id is not found"));
+                .orElseThrow(()->new ResourceNotFoundExeption("price list id is not found"));
     }
 
     public PriceList updatePriceList(PricelistDto pricelistDto, Integer priceListId) {
 
         PriceList priceList = priceListRepo.findById(priceListId)
-                .orElseThrow(()->new UsernameNotFoundException("price list id is not found"));
+                .orElseThrow(()->new ResourceNotFoundExeption("price list id is not found"));
 
         if(pricelistDto.model_id() != null){
             VehicleModels vehicleModels = vehicleModelsRepo.findById(pricelistDto.model_id())
-                    .orElseThrow(()->new UsernameNotFoundException("vehicle model id is not found"));
+                    .orElseThrow(()->new ResourceNotFoundExeption("vehicle models id is not found"));
             priceList.setVehicleModels(vehicleModels);
         }
         if(pricelistDto.year_id() != null){
             VehicleYears vehicleYears = vehicleYearsRepo.findById(pricelistDto.year_id())
-                    .orElseThrow(()->new UsernameNotFoundException("vehicle years id is not found"));
+                    .orElseThrow(()->new ResourceNotFoundExeption("vehicle years id is not found"));
             priceList.setVehicleYears(vehicleYears);
         }
         if(pricelistDto.price() != null){
@@ -184,6 +185,8 @@ public class PriceListService {
     }
 
     public void deletePriceList(Integer priceListId) {
+        priceListRepo.findById(priceListId)
+                .orElseThrow(()->new ResourceNotFoundExeption("price list id is not found"));
         priceListRepo.deleteById(priceListId);
     }
 }
