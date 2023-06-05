@@ -569,6 +569,18 @@
 						"url": "localhost:8080/vehicle-models/1"
 					},
 					"response": []
+				},
+				{
+					"name": "delete vehicle models",
+					"id": "c2f56c7f-8b98-43be-b824-d0280d5c53e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "8616361e-de84-4e38-81c1-98ba8c4cda94"
