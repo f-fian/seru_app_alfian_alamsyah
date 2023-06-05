@@ -39,7 +39,7 @@ public class PriceListService {
         VehicleYears vehicleYears = vehicleYearsRepo.findById(pricelistDto.year_id())
                 .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
         VehicleModels vehicleModels = vehicleModelsRepo.findById(pricelistDto.model_id())
-                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle years id is not found"));
+                .orElseThrow(()-> new ResourceNotFoundExeption("vehicle models id is not found"));
 
 
         PriceList priceList = new PriceList(pricelistDto.price(),vehicleYears,vehicleModels);
