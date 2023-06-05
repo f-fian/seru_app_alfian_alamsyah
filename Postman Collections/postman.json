@@ -489,8 +489,24 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"model 2\",\r\n    \"type_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/vehicle-models"
 					},
 					"response": []
 				},
@@ -516,6 +532,19 @@
 				{
 					"name": "get vehicle models",
 					"id": "0cd776b6-6c16-4b3e-a2e0-4a1feccb0a3e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/vehicle-models/2"
+					},
+					"response": []
+				},
+				{
+					"name": "update vehicle models",
+					"id": "f13985be-c01c-44bc-bbe7-243c0a56dc84",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
