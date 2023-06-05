@@ -279,7 +279,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"yamaha\"\r\n}",
+							"raw": "{\r\n    \"name\":\"honda\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -306,6 +306,47 @@
 						"method": "GET",
 						"header": [],
 						"url": "localhost:8080/vehicle-brands/1"
+					},
+					"response": []
+				},
+				{
+					"name": "get all vehicle brands",
+					"id": "92ebfdd9-a071-403a-b481-236227fe5ceb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/vehicle-brands"
+					},
+					"response": []
+				},
+				{
+					"name": "update vehicle brands",
+					"id": "4fc6fa47-4a8a-4a49-98bf-39f842130316",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NTg5NjEsImV4cCI6MTY4NjU2Mzc2MX0.Lywu5uzVzHSst_Yg_rwPBftqGq1Lr5zrgW-wxEBGoEg"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"mitsubishi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/vehicle-brands/3"
 					},
 					"response": []
 				}
