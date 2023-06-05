@@ -73,7 +73,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/users/2"
+						"url": "localhost:8080/users/1"
 					},
 					"response": []
 				},
