@@ -631,7 +631,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "localhost:8080/price-list"
 					},
 					"response": []
 				},
@@ -645,6 +646,18 @@
 						"method": "GET",
 						"header": [],
 						"url": "localhost:8080/price-list/1"
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "df2a2f06-8359-4411-8ef5-2950e41172af",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
