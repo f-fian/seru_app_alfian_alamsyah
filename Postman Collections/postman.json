@@ -437,7 +437,17 @@
 					},
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"XXX\",\r\n    \"brand_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/vehicle-types/2"
 					},
 					"response": []
 				}
