@@ -131,8 +131,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/users/2"
 					},
 					"response": []
 				}
