@@ -374,7 +374,20 @@
 		},
 		{
 			"name": "vehicle types",
-			"item": [],
+			"item": [
+				{
+					"name": "add vehicle types",
+					"id": "660b6bd0-2e75-48dc-91e4-5192a2ccc635",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
 		}
 	]
