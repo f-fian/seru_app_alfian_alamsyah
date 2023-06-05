@@ -58,7 +58,7 @@ public class VehicleYearsService {
                 .total(data.stream().count())
                 .limit(limit)
                 .page(page)
-                .skip((page-1)*2)
+                .skip((page-1)*limit)
                 .data(vehicleYearsRepo.findAll(pageable).getContent())
                 .build();
     }

@@ -92,7 +92,7 @@ public class PriceListService {
                     .total(data.getTotalElements())
                     .limit(limit)
                     .page(page)
-                    .skip((page-1)*2)
+                    .skip((page-1)*limit)
                     .data(data.getContent())
                     .build();
         }
@@ -106,7 +106,7 @@ public class PriceListService {
                     .total(data.getTotalElements())
                     .limit(limit)
                     .page(page)
-                    .skip((page-1)*2)
+                    .skip((page-1)*limit)
                     .data(data.getContent())
                     .build();
         }
@@ -120,7 +120,7 @@ public class PriceListService {
                     .total(data.getTotalElements())
                     .limit(limit)
                     .page(page)
-                    .skip((page-1)*2)
+                    .skip((page-1)*limit)
                     .data(data.getContent())
                     .build();
         }
@@ -149,7 +149,7 @@ public class PriceListService {
                 .total(data.getTotalElements())
                 .limit(limit)
                 .page(page)
-                .skip((page-1)*2)
+                .skip((page-1)*limit)
                 .data(data.getContent())
                 .build();
 

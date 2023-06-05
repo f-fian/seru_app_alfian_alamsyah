@@ -53,7 +53,7 @@ public class VehicleBrandsService {
                 .total(data.stream().count())
                 .limit(limit)
                 .page(page)
-                .skip((page-1)*2)
+                .skip((page-1)*limit)
                 .data(vehicleBrandRepo.findAll(pageable).getContent())
                 .build();
     }
