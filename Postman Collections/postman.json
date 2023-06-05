@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"popo\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":true\r\n}",
+							"raw": "{\r\n    \"username\":\"popo\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -92,7 +92,26 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/users"
+						"url": {
+							"raw": "localhost:8080/users?limit=2&page=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				},
