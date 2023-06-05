@@ -624,8 +624,20 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "get all price list",
 					"id": "d3b3963c-a138-4277-9f21-6d9abeb16fb1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "551e8276-7dfd-4f23-81ca-71a1b148e90c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
