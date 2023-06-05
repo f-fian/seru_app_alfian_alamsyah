@@ -238,7 +238,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete vehicle years",
 					"id": "f044a210-d063-4f9f-9cb8-7ccfb72f159d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
