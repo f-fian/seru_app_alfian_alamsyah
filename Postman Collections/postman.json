@@ -571,7 +571,7 @@
 					"response": []
 				},
 				{
-					"name": "delete vehicle models",
+					"name": "New Request",
 					"id": "c2f56c7f-8b98-43be-b824-d0280d5c53e6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
