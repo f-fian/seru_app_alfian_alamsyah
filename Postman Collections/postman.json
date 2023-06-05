@@ -398,6 +398,18 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "get vehicle types",
+					"id": "0230c62b-b056-4d64-8136-6bc3349bbecf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
