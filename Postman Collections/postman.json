@@ -73,7 +73,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/users/1"
+						"url": "localhost:8080/users/2"
 					},
 					"response": []
 				},
@@ -723,6 +723,13 @@
 				}
 			],
 			"id": "70ab1e77-80a8-465e-b593-d3412ce523ce"
+		}
+	],
+	"variable": [
+		{
+			"id": "890ca694-3cf5-4abf-8439-3ba4a0125b61",
+			"key": "seru_url",
+			"value": "https://seruappalfianalamsyah-production.up.railway.app"
 		}
 	]
 }
