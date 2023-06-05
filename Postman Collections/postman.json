@@ -458,21 +458,14 @@
 					"response": []
 				},
 				{
-					"name": "delete vehicle types",
+					"name": "New Request",
 					"id": "beca7973-1f90-4cd3-95df-0988a49109fe",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NTg5NjEsImV4cCI6MTY4NjU2Mzc2MX0.Lywu5uzVzHSst_Yg_rwPBftqGq1Lr5zrgW-wxEBGoEg"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": "localhost:8080/vehicle-types/2"
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
