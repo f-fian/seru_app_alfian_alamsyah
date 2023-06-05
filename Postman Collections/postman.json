@@ -374,20 +374,7 @@
 		},
 		{
 			"name": "vehicle types",
-			"item": [
-				{
-					"name": "New Request",
-					"id": "660b6bd0-2e75-48dc-91e4-5192a2ccc635",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			],
+			"item": [],
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
 		}
 	]
