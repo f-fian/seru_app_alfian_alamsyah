@@ -10,7 +10,8 @@
   menggunakan snake case (misalnya branch_id) sedangkan untuk di query param menggunakan tanda "-"
   untuk memisahkan kata (misal "year-id=1&model-id=1")
 
-- untuk mengakses API, terlebih dahulu dilakukan register. setelah itu di lakukan authentication
+- untuk mengakses API,
+terlebih dahulu dilakukan register. setelah itu di lakukan authentication
   untuk mendapatkan JWT (BEARER TOKEN AUTHORIZATION). Token yang di dapatkan dapat digunakan untuk mengakses API. untuk
   register dan authentication tidak perlu menggunakan JWT. POST,DELETE,PUT hanya bisa
   digukanakan oleh admin, sedangkan non admin hanya bisa untuk melakukan GET (readonly).
