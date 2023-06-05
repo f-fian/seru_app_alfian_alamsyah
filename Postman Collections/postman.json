@@ -388,7 +388,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "get al vehicle types",
 					"id": "2df949ac-8f30-43d0-a81b-4c2fa81f33f6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
