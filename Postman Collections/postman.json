@@ -594,7 +594,20 @@
 		},
 		{
 			"name": "price list",
-			"item": [],
+			"item": [
+				{
+					"name": "add price list",
+					"id": "11bda81f-3f1a-4588-9c9f-bf905b4623bb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "70ab1e77-80a8-465e-b593-d3412ce523ce"
 		}
 	]
