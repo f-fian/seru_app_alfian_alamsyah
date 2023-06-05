@@ -26,7 +26,7 @@
 								}
 							}
 						},
-						"url": "localhost:8080/register"
+						"url": "{{seru_url}}/register"
 					},
 					"response": []
 				},
@@ -727,7 +727,7 @@
 	],
 	"variable": [
 		{
-			"id": "890ca694-3cf5-4abf-8439-3ba4a0125b61",
+			"id": "422b8401-9cda-41bf-84e5-a90ca68a7704",
 			"key": "seru_url",
 			"value": "https://seruappalfianalamsyah-production.up.railway.app"
 		}
