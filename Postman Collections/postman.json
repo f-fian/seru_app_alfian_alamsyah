@@ -19,14 +19,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"pipip3\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
+							"raw": "{\r\n    \"username\":\"alfian\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/register"
+						"url": "{{seru_url}}/register"
 					},
 					"response": []
 				},
@@ -73,7 +73,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/users/1"
+						"url": "localhost:8080/users/2"
 					},
 					"response": []
 				},
@@ -723,6 +723,13 @@
 				}
 			],
 			"id": "70ab1e77-80a8-465e-b593-d3412ce523ce"
+		}
+	],
+	"variable": [
+		{
+			"id": "ba8f8481-3bf3-4b06-9708-63ae79b78f65",
+			"key": "seru_url",
+			"value": "https://seruappalfianalamsyah-production.up.railway.app"
 		}
 	]
 }
