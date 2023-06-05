@@ -204,7 +204,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "localhost:8080/vehicle-years"
 					},
 					"response": []
 				}
