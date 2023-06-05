@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"alfian\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":true\r\n}",
+							"raw": "{\r\n    \"username\":\"alamsyah\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
