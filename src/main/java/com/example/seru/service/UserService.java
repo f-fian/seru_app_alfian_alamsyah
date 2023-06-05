@@ -1,13 +1,18 @@
 package com.example.seru.service;
 
+import com.example.seru.dto.FindAllUserDto;
+import com.example.seru.dto.FindAllVehicleYearsDto;
 import com.example.seru.dto.UserRegistrationDto;
 import com.example.seru.dto.UserUpdateDto;
 import com.example.seru.exeption.DataAlreadyExistexeption;
 import com.example.seru.exeption.ResourceNotFoundExeption;
 import com.example.seru.model.user.User;
+import com.example.seru.model.vehicleYears.VehicleYears;
 import com.example.seru.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -50,16 +55,27 @@ public class UserService {
 
     }
 
-    public List<UserRegistrationDto> getAllUser() {
-        System.out.println("get all");
-        return userRepo.findAll().stream()
-                .map((data)-> new UserRegistrationDto(
-                        data.getId(),
-                        data.getUsername(),
-                        data.getIs_admin(),
-                        data.getCreatedAt(),
-                        data.getUpdatedAt()))
-                .collect(Collectors.toList());
+    public FindAllUserDto getAllUser(Integer page,Integer limit) {
+
+        List<User> data = userRepo.findAll();
+        if(page == null || limit == null){
+            return FindAllUserDto.builder()
+                    .total(data.stream().count())
+                    .limit(data.size())
+                    .page(1)
+                    .skip(0)
+                    .data(data)
+                    .build();
+        }
+
+        Pageable pageable = PageRequest.of(page-1,limit);
+        return FindAllUserDto.builder()
+                .total(data.stream().count())
+                .limit(limit)
+                .page(page)
+                .skip((page-1)*2)
+                .data(userRepo.findAll(pageable).getContent())
+                .build();
     }
     public UserRegistrationDto getUser(Integer userId) {
         System.out.println("get one");

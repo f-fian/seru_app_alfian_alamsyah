@@ -1,5 +1,6 @@
 package com.example.seru.controller;
 
+import com.example.seru.dto.FindAllUserDto;
 import com.example.seru.dto.UserRegistrationDto;
 import com.example.seru.dto.UserUpdateDto;
 import com.example.seru.model.user.User;
@@ -21,9 +22,12 @@ public class UserController {
 
 
     @GetMapping("")
-    public ResponseEntity<List<UserRegistrationDto>> getAllUser(){
+    public ResponseEntity<FindAllUserDto> getAllUser(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer limit
+    ){
         System.out.println("get all atas");
-        List<UserRegistrationDto> allUser = userService.getAllUser();
+        FindAllUserDto allUser = userService.getAllUser(page,limit);
         System.out.println("get all");
         return new ResponseEntity<>(allUser,HttpStatusCode.valueOf(200));
     }
