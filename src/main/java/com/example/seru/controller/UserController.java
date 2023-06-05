@@ -18,11 +18,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("add")
-    public ResponseEntity<UserRegistrationDto> addUser(@RequestBody() User user)
-    {
-        UserRegistrationDto newUser = userService.addUser(user);
-        return new ResponseEntity<>(newUser,HttpStatusCode.valueOf(201));
-    }
+
 
     @GetMapping("")
     public ResponseEntity<List<User>> getAllUser(){

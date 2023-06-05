@@ -4,6 +4,7 @@ package com.example.seru.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -23,15 +24,15 @@ public class SecurityConfig {
 
 
     String[] WHITE_LIST = {
-            "users/**",
             "vehicle-years/**",
             "vehicle-brands/**",
             "vehicle-types/**",
             "vehicle-models/**",
             "price-list/**",
-            "auth/**",
             "error"
     };
+
+    String[] ADMIN_URL = {"test-admin","user/**"};
 
 
     @Autowired
@@ -44,9 +45,14 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(WHITE_LIST).permitAll()
-                .requestMatchers("test-admin").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.GET,WHITE_LIST).permitAll()
+                .requestMatchers("authenticate","register").permitAll()
+                .requestMatchers(HttpMethod.POST,WHITE_LIST).hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.PUT,WHITE_LIST).hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.DELETE,WHITE_LIST).hasAuthority("ADMIN")
+                .requestMatchers(ADMIN_URL).hasAuthority("ADMIN")
                 .requestMatchers("test-user").hasAuthority("USER")
+
                 .and()
                 .httpBasic()
                 .and()
