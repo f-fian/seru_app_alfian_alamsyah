@@ -68,7 +68,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjM5MTcsImV4cCI6MTY4NjU2ODcxN30.N5GZIO5w_syVkrKbYDASv1ssKQX4F1hCVhTdVKMEStI"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjM5NDQsImV4cCI6MTY4NjU2ODc0NH0.hddgVkHKv7KP6UKCypv4y7YMzHVjpiv7_nuJFyOJdZA"
 							}
 						},
 						"method": "GET",
