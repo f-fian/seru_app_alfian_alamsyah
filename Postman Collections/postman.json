@@ -269,8 +269,24 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NTg5NjEsImV4cCI6MTY4NjU2Mzc2MX0.Lywu5uzVzHSst_Yg_rwPBftqGq1Lr5zrgW-wxEBGoEg"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"yamaha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/vehicle-brands"
 					},
 					"response": []
 				},
