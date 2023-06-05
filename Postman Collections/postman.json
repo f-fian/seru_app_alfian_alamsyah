@@ -456,6 +456,18 @@
 						"url": "localhost:8080/vehicle-types/2"
 					},
 					"response": []
+				},
+				{
+					"name": "delete vehicle types",
+					"id": "beca7973-1f90-4cd3-95df-0988a49109fe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
