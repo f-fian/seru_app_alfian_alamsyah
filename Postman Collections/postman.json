@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "0240afe1-edca-43a6-814b-557798eede10",
+		"name": "SERU+APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"_postman_id": "c2e288fc-8d94-4974-a6f8-51419fa255e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"alfian\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/register"
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"_postman_id": "adedae1b-cfcc-4db2-87a8-e82b920708a5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"alfian\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/authenticate"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "6767235e-63db-45b6-a93e-d777939d8a7d"
+		},
+		{
+			"name": "user",
+			"item": [],
+			"_postman_id": "9766125f-a449-498f-b057-9d34e0ab8d89"
+		},
+		{
+			"name": "vehicle year",
+			"item": [],
+			"_postman_id": "7a00c11f-0755-4912-bf7c-2559cdd89529"
+		}
+	]
+}
