@@ -351,14 +351,21 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete vehicle brands",
 					"id": "2f022314-0870-4cac-9189-2d8d59351485",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NTg5NjEsImV4cCI6MTY4NjU2Mzc2MX0.Lywu5uzVzHSst_Yg_rwPBftqGq1Lr5zrgW-wxEBGoEg"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/vehicle-brands/3"
 					},
 					"response": []
 				}
