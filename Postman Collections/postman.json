@@ -162,7 +162,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "get vehicle years",
 					"id": "1dc44627-1f69-4927-8432-3c3325e9d122",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
