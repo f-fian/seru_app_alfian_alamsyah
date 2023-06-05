@@ -63,7 +63,7 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 - register https://seruappalfianalamsyah-production.up.railway.app/register<br>
   body {
   "username":"adik",  
-   "password":"123",
+  "password":"123",
   "is_admin":true
   }
 

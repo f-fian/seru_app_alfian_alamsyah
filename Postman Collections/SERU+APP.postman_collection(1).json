@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "0240afe1-edca-43a6-814b-557798eede10",
 		"name": "SERU+APP",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18658299"
 	},
 	"item": [
 		{
@@ -10,60 +11,47 @@
 			"item": [
 				{
 					"name": "register",
-					"id": "c2e288fc-8d94-4974-a6f8-51419fa255e6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"alfian\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":true\r\n}",
+							"raw": "{\r\n    \"username\":\"adik\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{seru_url}}/register"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/register"
 					},
 					"response": []
 				},
 				{
 					"name": "authenticate",
-					"id": "adedae1b-cfcc-4db2-87a8-e82b920708a5",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"popo\",\r\n    \"password\":\"123\"\r\n}",
+							"raw": "{\r\n    \"username\":\"pipi\",\r\n    \"password\":\"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/authenticate"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/authenticate"
 					},
 					"response": []
 				}
-			],
-			"id": "6767235e-63db-45b6-a93e-d777939d8a7d"
+			]
 		},
 		{
 			"name": "user",
 			"item": [
 				{
 					"name": "get user",
-					"id": "7d3e36f8-64b7-4a5a-8ab6-c7c606fdcf3a",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -73,31 +61,30 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/users/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/users/2"
 					},
 					"response": []
 				},
 				{
 					"name": "get all users",
-					"id": "3377103a-67d4-434d-b733-d931d1528cce",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NTgzODIsImV4cCI6MTY4NjU2MzE4Mn0.OZr_vlYyuROHoCTYivOOvq8F0VW9m48RSJ87x9J1COI"
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjYyODMsImV4cCI6MTY4NjU3MTA4M30.1wjZ4VbDXhqPs3AbbSR7XXO8jgxP9QZZa4fZYDA7eVw"
 							}
 						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/users?limit=2&page=2",
+							"raw": "https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"seruappalfianalamsyah-production",
+								"up",
+								"railway",
+								"app"
 							],
-							"port": "8080",
 							"path": [
 								"users"
 							],
@@ -117,10 +104,6 @@
 				},
 				{
 					"name": "update user",
-					"id": "d571b3bf-2142-4238-8ed1-7b2ec430977e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -132,23 +115,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"jaya\",\r\n    \"is_admin\":true,\r\n    \"old_password\":\"123\",\r\n    \"new_password\":\"234\"\r\n}",
+							"raw": "{\r\n    \"username\":\"jaya suka suka\",\r\n    \"is_admin\":true,\r\n    \"old_password\":\"123\",\r\n    \"new_password\":\"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/users/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/users/4"
 					},
 					"response": []
 				},
 				{
 					"name": "delete user",
-					"id": "be16ced8-aaac-4a32-88ad-253a9d26a402",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -158,22 +137,17 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/users/9"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/users/7"
 					},
 					"response": []
 				}
-			],
-			"id": "9766125f-a449-498f-b057-9d34e0ab8d89"
+			]
 		},
 		{
 			"name": "vehicle year",
 			"item": [
 				{
 					"name": "add vehicle years",
-					"id": "143d9735-b601-4e26-a8f9-3c6d36bb4f1d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -185,23 +159,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"year\":\"2013\"\r\n}",
+							"raw": "{\r\n    \"year\":\"2009\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-years"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-years"
 					},
 					"response": []
 				},
 				{
 					"name": "get vehicle years",
-					"id": "1dc44627-1f69-4927-8432-3c3325e9d122",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -211,16 +181,12 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-years/1"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1"
 					},
 					"response": []
 				},
 				{
 					"name": "get all vehicle years",
-					"id": "be2c1e0e-276f-4a82-8280-90c4d3b28799",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -230,16 +196,34 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-years"
+						"url": {
+							"raw": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-years?limit=2&page=2",
+							"protocol": "https",
+							"host": [
+								"seruappalfianalamsyah-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"vehicle-years"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "update vehicle years",
-					"id": "77193797-5fa1-4347-9a1b-0ac8f713fb94",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -258,16 +242,12 @@
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-years/3"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1"
 					},
 					"response": []
 				},
 				{
 					"name": "delete vehicle years",
-					"id": "f044a210-d063-4f9f-9cb8-7ccfb72f159d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -277,22 +257,17 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/vehicle-years/7"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/10"
 					},
 					"response": []
 				}
-			],
-			"id": "7a00c11f-0755-4912-bf7c-2559cdd89529"
+			]
 		},
 		{
 			"name": "vehicle brands",
 			"item": [
 				{
 					"name": "add vehicle brands",
-					"id": "ad06fb35-8e77-41d7-b778-ff4baa126da1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -304,23 +279,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"honda\"\r\n}",
+							"raw": "{\r\n    \"name\":\"red eye\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-brands"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands"
 					},
 					"response": []
 				},
 				{
 					"name": "get vehicle brands",
-					"id": "ff5b1950-da28-4d50-a619-7ad48969d182",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -330,29 +301,43 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-brands/1"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/1"
 					},
 					"response": []
 				},
 				{
 					"name": "get all vehicle brands",
-					"id": "92ebfdd9-a071-403a-b481-236227fe5ceb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-brands"
+						"url": {
+							"raw": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands?page=2&limit=2",
+							"protocol": "https",
+							"host": [
+								"seruappalfianalamsyah-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"vehicle-brands"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "update vehicle brands",
-					"id": "4fc6fa47-4a8a-4a49-98bf-39f842130316",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -364,23 +349,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"mitsubishi\"\r\n}",
+							"raw": "{\r\n    \"name\":\"sukasuka\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-brands/3"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/8"
 					},
 					"response": []
 				},
 				{
 					"name": "delete vehicle brands",
-					"id": "2f022314-0870-4cac-9189-2d8d59351485",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -390,22 +371,17 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/vehicle-brands/3"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/10"
 					},
 					"response": []
 				}
-			],
-			"id": "b77cdaae-554f-4f46-b41b-eaf7d4b9d873"
+			]
 		},
 		{
 			"name": "vehicle types",
 			"item": [
 				{
 					"name": "add vehicle types",
-					"id": "660b6bd0-2e75-48dc-91e4-5192a2ccc635",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -417,49 +393,69 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"yamaha nmax2\",\r\n    \"brand_id\":1\r\n}",
+							"raw": "{\r\n    \"name\":\"honda 20\",\r\n    \"brand_id\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-types"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-types"
 					},
 					"response": []
 				},
 				{
 					"name": "get vehicle types",
-					"id": "0230c62b-b056-4d64-8136-6bc3349bbecf",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjYyODMsImV4cCI6MTY4NjU3MTA4M30.1wjZ4VbDXhqPs3AbbSR7XXO8jgxP9QZZa4fZYDA7eVw"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-types/1"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/1"
 					},
 					"response": []
 				},
 				{
 					"name": "get all vehicle types",
-					"id": "2df949ac-8f30-43d0-a81b-4c2fa81f33f6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-types"
+						"url": {
+							"raw": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-types?limit=2&page=2&brand-id=1",
+							"protocol": "https",
+							"host": [
+								"seruappalfianalamsyah-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"vehicle-types"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "brand-id",
+									"value": "1"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "update vehicle types",
-					"id": "3ea02ffd-6354-471a-954f-4f28d1f141a4",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -471,23 +467,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"XXX\",\r\n    \"brand_id\":1\r\n}",
+							"raw": "{\r\n    \"name\":\"honda baru\",\r\n    \"brand_id\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-types/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/11"
 					},
 					"response": []
 				},
 				{
 					"name": "delete vehicle types",
-					"id": "beca7973-1f90-4cd3-95df-0988a49109fe",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -497,22 +489,17 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/vehicle-types/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/11"
 					},
 					"response": []
 				}
-			],
-			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
+			]
 		},
 		{
 			"name": "vehicle models",
 			"item": [
 				{
 					"name": "post vehicle models",
-					"id": "8d677982-cea3-44c4-bebc-818c9ab1391d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -524,23 +511,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"model 2\",\r\n    \"type_id\":1\r\n}",
+							"raw": "{\r\n    \"name\":\"honda 1 model aaa\",\r\n    \"type_id\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-models"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-models"
 					},
 					"response": []
 				},
 				{
 					"name": "get all vehicle models",
-					"id": "a0f2c9e5-10ae-488c-a885-4f68898fd8f5",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -550,29 +533,47 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-models"
+						"url": {
+							"raw": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-models?page=2&limit=2&type-id=1",
+							"protocol": "https",
+							"host": [
+								"seruappalfianalamsyah-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"vehicle-models"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "type-id",
+									"value": "1"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "get vehicle models",
-					"id": "0cd776b6-6c16-4b3e-a2e0-4a1feccb0a3e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/vehicle-models/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1"
 					},
 					"response": []
 				},
 				{
 					"name": "update vehicle models",
-					"id": "f13985be-c01c-44bc-bbe7-243c0a56dc84",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -584,23 +585,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"model baru\",\r\n    \"type_id\":1\r\n}",
+							"raw": "{\r\n    \"name\":\"honda 1 model baru\",\r\n    \"type_id\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/vehicle-models/1"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1"
 					},
 					"response": []
 				},
 				{
 					"name": "delete vehicle models",
-					"id": "c2f56c7f-8b98-43be-b824-d0280d5c53e6",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -610,22 +607,17 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/vehicle-models/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/12"
 					},
 					"response": []
 				}
-			],
-			"id": "8616361e-de84-4e38-81c1-98ba8c4cda94"
+			]
 		},
 		{
 			"name": "price list",
 			"item": [
 				{
 					"name": "add price list",
-					"id": "11bda81f-3f1a-4588-9c9f-bf905b4623bb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -637,49 +629,79 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"price\":300,\r\n    \"model_id\":1,\r\n    \"year_id\":1\r\n}",
+							"raw": "{\r\n    \"price\":746492,\r\n    \"model_id\":1,\r\n    \"year_id\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/price-list"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/price-list"
 					},
 					"response": []
 				},
 				{
 					"name": "get all price list",
-					"id": "d3b3963c-a138-4277-9f21-6d9abeb16fb1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/price-list"
+						"url": {
+							"raw": "https://seruappalfianalamsyah-production.up.railway.app/price-list?limit=2&page=2&year-id=1&model-id=1",
+							"protocol": "https",
+							"host": [
+								"seruappalfianalamsyah-production",
+								"up",
+								"railway",
+								"app"
+							],
+							"path": [
+								"price-list"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "year-id",
+									"value": "1"
+								},
+								{
+									"key": "model-id",
+									"value": "1"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "get price list",
-					"id": "551e8276-7dfd-4f23-81ca-71a1b148e90c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/price-list/1"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/price-list/1"
 					},
 					"response": []
 				},
 				{
 					"name": "update price list",
-					"id": "df2a2f06-8359-4411-8ef5-2950e41172af",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -691,23 +713,19 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"price\":99,\r\n    \"model_id\":1,\r\n    \"year_id\":1\r\n}",
+							"raw": "{\r\n    \"price\":99999,\r\n    \"model_id\":1,\r\n    \"year_id\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "localhost:8080/price-list/1"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/price-list/1"
 					},
 					"response": []
 				},
 				{
 					"name": "delete price list",
-					"id": "2450d31c-1be3-4c6e-a3a3-eb9910e77b6e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -717,17 +735,15 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/price-list/2"
+						"url": "https://seruappalfianalamsyah-production.up.railway.app/price-list/9"
 					},
 					"response": []
 				}
-			],
-			"id": "70ab1e77-80a8-465e-b593-d3412ce523ce"
+			]
 		}
 	],
 	"variable": [
 		{
-			"id": "ba8f8481-3bf3-4b06-9708-63ae79b78f65",
 			"key": "seru_url",
 			"value": "https://seruappalfianalamsyah-production.up.railway.app"
 		}
