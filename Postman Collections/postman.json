@@ -593,8 +593,21 @@
 			"id": "8616361e-de84-4e38-81c1-98ba8c4cda94"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
+			"name": "price list",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "11bda81f-3f1a-4588-9c9f-bf905b4623bb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "70ab1e77-80a8-465e-b593-d3412ce523ce"
 		}
 	]
