@@ -411,7 +411,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "localhost:8080/vehicle-types/1"
 					},
 					"response": []
 				},
@@ -423,7 +424,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "localhost:8080/vehicle-types"
 					},
 					"response": []
 				}
