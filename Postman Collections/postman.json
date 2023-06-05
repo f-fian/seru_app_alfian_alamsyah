@@ -430,7 +430,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "update vehicle types",
 					"id": "3ea02ffd-6354-471a-954f-4f28d1f141a4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
