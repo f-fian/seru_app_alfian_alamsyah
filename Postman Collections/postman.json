@@ -195,6 +195,18 @@
 						"url": "localhost:8080/vehicle-years/1"
 					},
 					"response": []
+				},
+				{
+					"name": "get all vehicle years",
+					"id": "be2c1e0e-276f-4a82-8280-90c4d3b28799",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "7a00c11f-0755-4912-bf7c-2559cdd89529"
