@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"pipip3\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
+							"raw": "{\r\n    \"username\":\"alfian\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -727,7 +727,7 @@
 	],
 	"variable": [
 		{
-			"id": "422b8401-9cda-41bf-84e5-a90ca68a7704",
+			"id": "ba8f8481-3bf3-4b06-9708-63ae79b78f65",
 			"key": "seru_url",
 			"value": "https://seruappalfianalamsyah-production.up.railway.app"
 		}
