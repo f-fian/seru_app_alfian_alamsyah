@@ -236,6 +236,18 @@
 						"url": "localhost:8080/vehicle-years/3"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "f044a210-d063-4f9f-9cb8-7ccfb72f159d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "7a00c11f-0755-4912-bf7c-2559cdd89529"
