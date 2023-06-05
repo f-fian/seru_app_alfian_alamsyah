@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"popo\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
+							"raw": "{\r\n    \"username\":\"pipip3\",\r\n    \"password\":\"123\",\r\n    \"is_admin\":false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +73,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "localhost:8080/users/1"
+						"url": "localhost:8080/users/2"
 					},
 					"response": []
 				},
