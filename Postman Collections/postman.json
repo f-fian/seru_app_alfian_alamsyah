@@ -373,8 +373,21 @@
 			"id": "b77cdaae-554f-4f46-b41b-eaf7d4b9d873"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
+			"name": "vehicle types",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "660b6bd0-2e75-48dc-91e4-5192a2ccc635",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
 		}
 	]
