@@ -44,7 +44,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("error").permitAll()
+                .requestMatchers("error","/").permitAll()
                 .requestMatchers(HttpMethod.GET,WHITE_LIST).permitAll()
                 .requestMatchers("authenticate","register").permitAll()
                 .requestMatchers(HttpMethod.POST,WHITE_LIST).hasAuthority("ADMIN")
@@ -52,17 +52,12 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE,WHITE_LIST).hasAuthority("ADMIN")
                 .requestMatchers(ADMIN_URL).hasAuthority("ADMIN")
                 .requestMatchers("test-user").hasAuthority("USER")
-
                 .and()
                 .httpBasic()
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-
     }
-
-
-
     @Bean
     AuthenticationManager authenticationManager(
             AuthenticationConfiguration authenticationConfiguration) throws Exception {

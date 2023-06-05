@@ -13,10 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthRegisterController {
@@ -53,4 +50,11 @@ public class AuthRegisterController {
         UserRegistrationDto newUser = userService.addUser(user);
         return new ResponseEntity<>(newUser, HttpStatusCode.valueOf(201));
     }
+
+    @GetMapping("/")
+    public String home(){
+        return "This is Home Page! for access API, please register and login then do authentication to get JWT token";
+    }
+
+
 }
