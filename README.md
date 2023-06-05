@@ -11,7 +11,7 @@
   untuk memisahkan kata (misal "year-id=1&model-id=1")
 
 - untuk mengakses API,
-terlebih dahulu dilakukan register. setelah itu di lakukan authentication
+  terlebih dahulu dilakukan register. setelah itu di lakukan authentication
   untuk mendapatkan JWT (BEARER TOKEN AUTHORIZATION). Token yang di dapatkan dapat digunakan untuk mengakses API. untuk
   register dan authentication tidak perlu menggunakan JWT. POST,DELETE,PUT hanya bisa
   digukanakan oleh admin, sedangkan non admin hanya bisa untuk melakukan GET (readonly).
@@ -34,7 +34,8 @@ terlebih dahulu dilakukan register. setelah itu di lakukan authentication
   contoh API dengan pagination <br>
   "https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2"
 
-- untuk mengupdate data dengan PUT METHODE, tidak harus semua filed diisi, bisi hanya beberapa filed atau semua filed untuk bisa mengupdate DATA
+- Update data dengan PUT METHODE
+  tidak harus semua filed diisi, bisi hanya beberapa filed atau semua filed untuk bisa mengupdate DATA
   contoh, mengganti data vehicle models<br>
   PUT https://seruappalfianalamsyah-production.up.railway.app/price-list/1<br>
   body {
@@ -59,198 +60,130 @@ yang unik misalnya field name. Tidak bisa memasukan value yang sama pada filed u
 
 ## Register and Authentication API
 
-- register
+- register https://seruappalfianalamsyah-production.up.railway.app/register<br>
+  body {
+  "username":"adik",  
+   "password":"123",
+  "is_admin":true
+  }
 
-https://seruappalfianalamsyah-production.up.railway.app/register<br>
-body {
-"username":"adik",  
- "password":"123",
-"is_admin":true
-}
-
-- authentication
-
-https://seruappalfianalamsyah-production.up.railway.app/authenticate<br>
-body {
-"username":"adik",
-"password":"123"
-}
+- authentication https://seruappalfianalamsyah-production.up.railway.app/authenticate<br>
+  body {
+  "username":"adik",
+  "password":"123"
+  }
 
 ## USER API
 
-- getUser
-  https://seruappalfianalamsyah-production.up.railway.app/users/2
+- getUser https://seruappalfianalamsyah-production.up.railway.app/users/2
 
-- getAllUser
-  https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2
+- getAllUser https://seruappalfianalamsyah-production.up.railway.app/users?limit=2&page=2
 
-- updaetUser
+- updaetUser https://seruappalfianalamsyah-production.up.railway.app/users/3<br>
+  body {
+  "username":"jaya",
+  "is_admin":true,
+  "old_password":"123",
+  "new_password":"234"
+  }<br>
+  ada fitur untuk update user password. dengan syarat old_password harus sama dengan password
+  saat ini yang nantinya akan digantikan dengan new_password. apabila salah akan throw exeption.
+  kedua filed old_password dan new_password harus diisi untuk mengganti password.
 
-https://seruappalfianalamsyah-production.up.railway.app/users/3<br>
-body {
-"username":"jaya",
-"is_admin":true,
-"old_password":"123",
-"new_password":"234"
-}<br>
-ada fitur untuk update user password. dengan syarat old_password harus sama dengan password
-saat ini yang nantinya akan digantikan dengan new_password. apabila salah akan throw exeption.
-kedua filed old_password dan new_password harus diisi untuk mengganti password.
-
-- deleteUser
-
-https://seruappalfianalamsyah-production.up.railway.app/users/7
+- deleteUser https://seruappalfianalamsyah-production.up.railway.app/users/7
 
 ## Vehicle Years API
 
-- addVehicleYears
+- addVehicleYears https://seruappalfianalamsyah-production.up.railway.app/vehicle-years<br>
+  body { "year":"2009"}
 
-https://seruappalfianalamsyah-production.up.railway.app/vehicle-years<br>
-body { "year":"2009"}
+- getVEhicleYears https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1
 
-- getVEhicleYears
+- getAllVehicleYears https://seruappalfianalamsyah-production.up.railway.app/vehicle-years?limit=2&page=2
 
-https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1
-
-- getAllVehicleYears
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-years?limit=2&page=2
-
-## updateVehicleYears
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1
-
-- body {
+- updateVehicleYears https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/1<br>
+  body {
   "year":"2009"
   }
 
-## delete vehicle years
+- delete vehicle years https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/10
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-years/10
+## Vehicle Brands API
 
-# Vehicle Brands API
-
-## addVehicleBrands
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands
-
-- body {
+- addVehicleBrands https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands<br>
+  body {
   "name":"red eye"
   }
 
-## getVehicleBrands
+- getVehicleBrands https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/1
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/1
+- getAllVehicleBrands https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands?page=2&limit=2
 
-## getAllVehicleBrands
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands?page=2&limit=2
-
-## updateVehicleBrands
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/8
-
-- body {
+- updateVehicleBrands https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/8<br>
+  body {
   "name":"red eye"
   }
 
-## deleteVehicleBrands
+- deleteVehicleBrands https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/10
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-brands/10
+## Vehicle Types API
 
-# Vehicle Types API
-
-## addVehicleTypes
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-types
-- body {
+- addVehicleTypes https://seruappalfianalamsyah-production.up.railway.app/vehicle-types<br>
+  body {
   "name":"honda 20",
   "brand_id":2
   }
 
-## getVehicleTypes
+- getVehicleTypes https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/1
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/1
+- etAllVehicleTypes https://seruappalfianalamsyah-production.up.railway.app/vehicle-types?limit=2&page=2&brand-id=1
 
-## getAllVehicleTypes
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-types?limit=2&page=2&brand-id=1
-
-## updateVehicleTypes
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/11
-
-- body {
+- updateVehicleTypes https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/11<br>
+  body {
   "name":"honda baru",
   "brand_id":1
   }
 
-## deleteVehicleTypes
+- deleteVehicleTypes https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/10
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-types/10
+## Vehicle Models API
 
-# Vehicle Models API
-
-## addVehicleModels
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-models
-
-- body {
+- addVehicleModels https://seruappalfianalamsyah-production.up.railway.app/vehicle-models<br>
+  body {
   "name":"honda 1 model aaa",
   "type_id":1
   }
 
-## getVehicleModels
+- getVehicleModels https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1
+- getAllVehicleModels https://seruappalfianalamsyah-production.up.railway.app/vehicle-models?page=2&limit=2&type-id=1
 
-## getAllVehicleModels
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-models?page=2&limit=2&type-id=1
-
-## updateVehicleModels
-
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1
-
-- body {
+- updateVehicleModels https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/1<br>
+  body {
   "name":"honda 1 model baru",
   "type_id":1
   }
 
-## deleteVehicleModels
+- deleteVehicleModels https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/11
 
-- https://seruappalfianalamsyah-production.up.railway.app/vehicle-models/11
+## Price Lists API
 
-# Price Lists API
-
-## addPricelist
-
-- https://seruappalfianalamsyah-production.up.railway.app/price-list
-
-- body {
+- addPricelist https://seruappalfianalamsyah-production.up.railway.app/price-list<br>
+  body {
   "price":746492,
   "model_id":1,
   "year_id":1
   }
 
-## getPricelist
+- getPricelist https://seruappalfianalamsyah-production.up.railway.app/price-list/1
 
-- https://seruappalfianalamsyah-production.up.railway.app/price-list/1
+- getAllPricelist https://seruappalfianalamsyah-production.up.railway.app/price-list?limit=2&page=2&year-id=1&model-id=1
 
-## getAllPricelist
-
-- https://seruappalfianalamsyah-production.up.railway.app/price-list?limit=2&page=2&year-id=1&model-id=1
-
-## updatePricelist
-
-- https://seruappalfianalamsyah-production.up.railway.app/price-list/1
-
-- body {
+- updatePricelist https://seruappalfianalamsyah-production.up.railway.app/price-list/1<br>
+  body {
   "price":99999,
   "model_id":1,
   "year_id":2
   }
 
-## deletePricelist
-
-- https://seruappalfianalamsyah-production.up.railway.app/price-list/8
+- deletePricelist https://seruappalfianalamsyah-production.up.railway.app/price-list/8
