@@ -571,14 +571,21 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete vehicle models",
 					"id": "c2f56c7f-8b98-43be-b824-d0280d5c53e6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/vehicle-models/2"
 					},
 					"response": []
 				}
