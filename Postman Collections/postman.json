@@ -388,8 +388,8 @@
 					"response": []
 				},
 				{
-					"name": "get al vehicle types",
-					"id": "2df949ac-8f30-43d0-a81b-4c2fa81f33f6",
+					"name": "get vehicle types",
+					"id": "0230c62b-b056-4d64-8136-6bc3349bbecf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -400,8 +400,8 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
-					"id": "0230c62b-b056-4d64-8136-6bc3349bbecf",
+					"name": "get all vehicle types",
+					"id": "2df949ac-8f30-43d0-a81b-4c2fa81f33f6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
