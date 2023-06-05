@@ -684,8 +684,15 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/price-list/2"
 					},
 					"response": []
 				}
