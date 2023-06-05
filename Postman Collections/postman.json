@@ -321,6 +321,18 @@
 						"url": "localhost:8080/vehicle-brands"
 					},
 					"response": []
+				},
+				{
+					"name": "update vehicle brands",
+					"id": "4fc6fa47-4a8a-4a49-98bf-39f842130316",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "b77cdaae-554f-4f46-b41b-eaf7d4b9d873"
