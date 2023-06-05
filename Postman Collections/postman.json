@@ -148,7 +148,20 @@
 		},
 		{
 			"name": "vehicle year",
-			"item": [],
+			"item": [
+				{
+					"name": "New Request",
+					"id": "143d9735-b601-4e26-a8f9-3c6d36bb4f1d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "7a00c11f-0755-4912-bf7c-2559cdd89529"
 		}
 	]
