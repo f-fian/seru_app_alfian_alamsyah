@@ -123,6 +123,18 @@
 						"url": "localhost:8080/users/2"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "be16ced8-aaac-4a32-88ad-253a9d26a402",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "9766125f-a449-498f-b057-9d34e0ab8d89"
