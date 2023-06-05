@@ -258,7 +258,7 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/vehicle-years/3"
+						"url": "localhost:8080/vehicle-years/7"
 					},
 					"response": []
 				}
