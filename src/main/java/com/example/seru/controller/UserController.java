@@ -29,13 +29,17 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public UserRegistrationDto getAllUser(@PathVariable Integer userId){
-        return userService.getUser(userId);
+    public ResponseEntity<UserRegistrationDto> getAllUser(@PathVariable Integer userId){
+        UserRegistrationDto userRegistrationDto = userService.getUser(userId);
+        return new ResponseEntity<>(userRegistrationDto,HttpStatusCode.valueOf(200));
     }
 
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable Integer userId){
-        return userService.deleteUser(userId);
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer userId){
+
+        userService.deleteUser(userId);
+        return new ResponseEntity<>(HttpStatusCode.valueOf(204));
+
     }
 
 

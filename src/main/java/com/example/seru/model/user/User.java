@@ -18,7 +18,8 @@ import java.time.LocalDateTime;
 @Table(
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "username",name = "uniqeNameConstraint")
-        }
+        },
+        name = "users"
 )
 public class User {
 

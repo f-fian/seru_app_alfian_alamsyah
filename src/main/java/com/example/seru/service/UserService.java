@@ -63,7 +63,8 @@ public class UserService {
     }
     public UserRegistrationDto getUser(Integer userId) {
         System.out.println("get one");
-        User user = userRepo.findById(userId).orElseThrow(()->new UsernameNotFoundException("user id tidak ditemukan"));
+        User user = userRepo.findById(userId)
+                .orElseThrow(()->new ResourceNotFoundExeption("user id tidak ditemukan"));
         return new UserRegistrationDto(
                 user.getId(),
                 user.getUsername(),
