@@ -678,7 +678,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete price list",
 					"id": "2450d31c-1be3-4c6e-a3a3-eb9910e77b6e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
