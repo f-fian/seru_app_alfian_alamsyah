@@ -495,14 +495,21 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "get all vehicle models",
 					"id": "a0f2c9e5-10ae-488c-a885-4f68898fd8f5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
+							}
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "localhost:8080/vehicle-models"
 					},
 					"response": []
 				}
