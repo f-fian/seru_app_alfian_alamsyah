@@ -279,7 +279,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"yamaha\"\r\n}",
+							"raw": "{\r\n    \"name\":\"honda\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,14 +310,15 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "get all vehicle brands",
 					"id": "92ebfdd9-a071-403a-b481-236227fe5ceb",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "localhost:8080/vehicle-brands"
 					},
 					"response": []
 				}
