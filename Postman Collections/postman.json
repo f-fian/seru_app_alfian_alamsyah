@@ -310,7 +310,7 @@
 					"response": []
 				},
 				{
-					"name": "get all vehicle brands",
+					"name": "New Request",
 					"id": "92ebfdd9-a071-403a-b481-236227fe5ceb",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
