@@ -428,6 +428,18 @@
 						"url": "localhost:8080/vehicle-types"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "3ea02ffd-6354-471a-954f-4f28d1f141a4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
