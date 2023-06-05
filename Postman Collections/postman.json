@@ -400,7 +400,7 @@
 					"response": []
 				},
 				{
-					"name": "get vehicle types",
+					"name": "New Request",
 					"id": "0230c62b-b056-4d64-8136-6bc3349bbecf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
