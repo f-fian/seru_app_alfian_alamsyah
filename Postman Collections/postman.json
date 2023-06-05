@@ -139,7 +139,7 @@
 						},
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/users/1"
+						"url": "localhost:8080/users/9"
 					},
 					"response": []
 				}
