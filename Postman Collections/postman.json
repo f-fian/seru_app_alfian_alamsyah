@@ -261,7 +261,20 @@
 		},
 		{
 			"name": "vehicle brands",
-			"item": [],
+			"item": [
+				{
+					"name": "add vehicle brands",
+					"id": "ad06fb35-8e77-41d7-b778-ff4baa126da1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "b77cdaae-554f-4f46-b41b-eaf7d4b9d873"
 		}
 	]
