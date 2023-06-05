@@ -480,52 +480,8 @@
 			"id": "3bc25d6e-8b6f-4b5b-becc-b2703a274a39"
 		},
 		{
-			"name": "vehicle models",
-			"item": [
-				{
-					"name": "post vehicle models",
-					"id": "8d677982-cea3-44c4-bebc-818c9ab1391d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "get all vehicle models",
-					"id": "a0f2c9e5-10ae-488c-a885-4f68898fd8f5",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGZpYW4iLCJpYXQiOjE2ODU5NjI1MzUsImV4cCI6MTY4NjU2NzMzNX0.WYG7zr6rDlYfPrkqulibsxGACvkF1-AI18BbPt3FuHs"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "localhost:8080/vehicle-models"
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"id": "0cd776b6-6c16-4b3e-a2e0-4a1feccb0a3e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				}
-			],
+			"name": "New Folder",
+			"item": [],
 			"id": "8616361e-de84-4e38-81c1-98ba8c4cda94"
 		}
 	]
