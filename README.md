@@ -51,7 +51,7 @@
 - Implementasi filter tiap entity (API) dengan column yang tersedia
 
 Contoh: Kita punya data Vehicle Brand (vehicle_brands) dengan ID = 1. Maka kita bisa melakukan filter dengan kolom brand_id seperti di bawah ini.
-Endpoint: /vehicle-types?brand_id=1
+Endpoint: /vehicle-types?brand-id=1
 
 - Ada filed unique di table
 
