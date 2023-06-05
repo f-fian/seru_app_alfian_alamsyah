@@ -17,17 +17,18 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("add")
 
 
     @GetMapping("")
-    public ResponseEntity<List<User>> getAllUser(){
-        List<User> allUser = userService.getAllUser();
+    public ResponseEntity<List<UserRegistrationDto>> getAllUser(){
+        System.out.println("get all atas");
+        List<UserRegistrationDto> allUser = userService.getAllUser();
+        System.out.println("get all");
         return new ResponseEntity<>(allUser,HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/{userId}")
-    public User getAllUser(@PathVariable Integer userId){
+    public UserRegistrationDto getAllUser(@PathVariable Integer userId){
         return userService.getUser(userId);
     }
 

@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,9 @@ public class UserService {
             UserRegistrationDto registeredUser = new UserRegistrationDto(
                     newUser.getId(),
                     newUser.getUsername(),
-                    newUser.getIs_admin()
+                    newUser.getIs_admin(),
+                    newUser.getCreatedAt(),
+                    newUser.getUpdatedAt()
             );
             return registeredUser;
         }catch (DataAccessException error){
@@ -45,11 +48,26 @@ public class UserService {
 
     }
 
-    public List<User> getAllUser() {
-        return userRepo.findAll();
+    public List<UserRegistrationDto> getAllUser() {
+        System.out.println("get all");
+        return userRepo.findAll().stream()
+                .map((data)-> new UserRegistrationDto(
+                        data.getId(),
+                        data.getUsername(),
+                        data.getIs_admin(),
+                        data.getCreatedAt(),
+                        data.getUpdatedAt()))
+                .collect(Collectors.toList());
     }
-    public User getUser(Integer userId) {
-        return userRepo.findById(userId).orElseThrow(()->new UsernameNotFoundException("user id tidak ditemukan"));
+    public UserRegistrationDto getUser(Integer userId) {
+        System.out.println("get one");
+        User user = userRepo.findById(userId).orElseThrow(()->new UsernameNotFoundException("user id tidak ditemukan"));
+        return new UserRegistrationDto(
+                user.getId(),
+                user.getUsername(),
+                user.getIs_admin(),
+                user.getCreatedAt(),
+                user.getUpdatedAt());
     }
 
     public String deleteUser(Integer userId) {
