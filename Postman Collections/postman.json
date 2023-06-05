@@ -273,6 +273,18 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "get vehicle brands",
+					"id": "ff5b1950-da28-4d50-a619-7ad48969d182",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "b77cdaae-554f-4f46-b41b-eaf7d4b9d873"
