@@ -59,7 +59,7 @@
 			"name": "user",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "get user",
 					"id": "7d3e36f8-64b7-4a5a-8ab6-c7c606fdcf3a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
